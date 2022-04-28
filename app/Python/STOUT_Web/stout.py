@@ -1,6 +1,7 @@
 # Initializing and importing necessary libararies
 
 import tensorflow as tf
+from rdkit import Chem
 import os
 import pickle
 import re
@@ -46,6 +47,7 @@ def translate_forward(sentence_input: str) -> str:
     """
     if len(sentence_input) == 0:
         return ''
+    sentence_input = Chem.MolToSmiles(Chem.MolFromSmiles(sentence_input),kekuleSmiles=True)
     splitted_list = list(sentence_input)
     Tokenized_SMILES = re.sub(r"\s+(?=[a-z])", "", " ".join(map(str, splitted_list)))
     decoded = helper.tokenize_input(Tokenized_SMILES, inp_lang, inp_max_length)

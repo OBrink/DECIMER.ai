@@ -50,7 +50,7 @@ RUN pip3 install efficientnet
 RUN pip3 install selfies
 RUN pip3 install tensorflow==2.7.0
 RUN pip3 install keras==2.3.0
-
+RUN pip3 install rdkit-pypi
 
 RUN pecl install apcu-5.1.20 && docker-php-ext-enable apcu
 COPY docker/app/php.ini   $PHP_INI_DIR/conf.d/
