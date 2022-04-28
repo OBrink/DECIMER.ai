@@ -22,7 +22,8 @@ for gpu in gpus:
 
 
 # Load the packed model forward
-# Load important pickle files which consists the tokenizers and the maxlength setting
+# Load important pickle files which consists the tokenizers and
+# the maxlength setting
 base = os.path.split(__file__)[0]
 inp_lang = pickle.load(open(os.path.join(base, "models/assets/tokenizer_input.pkl"), "rb"))
 targ_lang = pickle.load(open(os.path.join(base, "models/assets/tokenizer_target.pkl"), "rb"))
