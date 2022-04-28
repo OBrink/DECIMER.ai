@@ -5,7 +5,7 @@
         <img src="DECIMER.gif" alt="DECIMER Logo" id="decimer_logo_gif" style="display: none;" />
         <img src="DECIMER.png" alt="DECIMER Logo" id="decimer_logo" style="display: none;" />
         <img src="loading_icon.gif" alt="Loading icon" class="mx-auto" id="loading_icon" style="display: none;" />
-        <div class="min-h-screen pt-5">
+        <div class="pt-5">
             <!-- DECIMER LOGO (Animated gif is only shown the first time we are sent to index view) -->
             @if (!Session::get('img_paths'))
                 <script>
@@ -126,7 +126,7 @@
             @endif
         </div>
 
-        <!-- EVERYTHING UNTIL HERE IS PRESENTED IN A DIV WITH MIN. ONE SCREEN HEIGHT -->
+        
         <!-- If a file was loaded, display page images -->
         @if ($img_paths = Session::get('img_paths'))
             @if ($img_paths != '[]')
