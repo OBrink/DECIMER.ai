@@ -131,8 +131,10 @@
 				image segmentation and recognition. DECIMER is actively developed and maintained by the
 				<a href="{{ url('https://cheminf.uni-jena.de/') }}" target="_blank" class="text-blue-400 hover:text-blue-600 transition">Steinbeck group</a> at the
 				<a href="{{ url('https://www.uni-jena.de/') }}" target="_blank" class="text-blue-400 hover:text-blue-600 transition">Friedrich Schiller University Jena</a>.
-				We have no interest in saving any of your uploaded data longer than necessary. Your documents and images are only saved temporarily
-				unless a problem is reported. If a problem report is submitted, we save the uploaded information and use it to improve our systems.
+				You need to have the right granted by the publisher of the uploaded documents and images to use them for data mining.
+				We do not store or use the data for anything other than automated processing and display of results in the web app. 
+				We have no interest in saving any of your uploaded data longer than necessary. Your documents and images are only saved for one hour
+				unless a problem is reported. If a problem is reported, we will use the reported image to analyse errors before deleting them.
 				Google Analytics is used to get some basic statistics about the number of visitors.
 				You can look up a more detailed description of what happens with your data in our 
 				<a href="{{ route('privacy_policy') }}" target="_blank" class="text-blue-400 hover:text-blue-600 transition">privacy policy</a>. 
