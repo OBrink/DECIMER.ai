@@ -142,7 +142,8 @@
 				<a href="{{ route('impressum') }}" target="_blank" class="text-blue-400 hover:text-blue-600 transition">Impressum - Legal Disclosure</a>.
 				The animated loading icon was generated using
 				<a href="{{ url('https://loading.io/icon/') }}" target="_blank" class="text-blue-400 hover:text-blue-600 transition">loading.io</a>.
-				If you run into problems, please file an issue on Github or 
+				If you run into problems, please file an issue on 
+				<a href="{{ url('https://github.com/OBrink/DECIMER_Web/issues') }}" target="_blank" class="text-blue-400 hover:text-blue-600 transition">Github</a> or 
 				<a href= "mailto:otto.brinkhaus@uni-jena.de" class="text-blue-400 hover:text-blue-600 transition">contact us via email</a>.
 			</p>
 		</div>
