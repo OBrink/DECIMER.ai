@@ -34,7 +34,7 @@ def main():
     paths = eval(paths)
     
     # Create endless iterator of shuffled ports
-    num_ports = 1
+    num_ports = 10
     ports = list(range(23456, 23456 + num_ports))
     random.shuffle(ports)
     ports = cycle(ports)

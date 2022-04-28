@@ -30,11 +30,12 @@ def send_and_receive(path: str, port: int):
 
 def main():
     # Make sure the array with paths can be digested by eval
-    paths = sys.argv[1].replace(',', '","').replace('[', '["').replace(']', '"]')
+    paths = sys.argv[1].replace(',', '","')
+    paths = paths.replace('[', '["').replace(']', '"]')
     paths = eval(paths)
 
     # Create endless iterator of shuffled ports
-    num_ports = 1
+    num_ports = 6
     ports = list(range(65432, 65432 + num_ports))
     random.shuffle(ports)
     ports = cycle(ports)
@@ -43,7 +44,6 @@ def main():
                       for path in paths]
     with Pool(len(paths)) as p:
         SMILES = p.starmap(send_and_receive, starmap_tuples)
-
 
     print(json.dumps(SMILES))
 
