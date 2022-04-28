@@ -34,7 +34,7 @@ reloaded_forward = tf.saved_model.load(os.path.join(base, "models/translator_for
 # reloaded_reverse = tf.saved_model.load("STOUT_Web/models/translator_reverse")
 
 
-def translate_forward(sentence_input: str) -> str:
+def translate_forward(smiles: str) -> str:
     """
     Takes user input splits them into words and generates tokens.
     Tokens are then passed to the model and the model predicted tokens are
@@ -47,14 +47,15 @@ def translate_forward(sentence_input: str) -> str:
     Returns:
         result (str): The predicted IUPAC names in string format.
     """
-    if len(sentence_input) == 0:
+    if len(smiles) == 0:
         return ''
-    mol = Chem.MolFromSmiles(sentence_input)
+    smiles = smiles.replace('\\/', '/')
+    mol = Chem.MolFromSmiles(smiles)
     if mol:
-        sentence_input = Chem.MolToSmiles(mol, kekuleSmiles=True)
-        splitted_list = list(sentence_input)
-        Tokenized_SMILES = re.sub(r"\s+(?=[a-z])", "", " ".join(map(str, splitted_list)))
-        decoded = helper.tokenize_input(Tokenized_SMILES, inp_lang, inp_max_length)
+        smiles = Chem.MolToSmiles(mol, kekuleSmiles=True)
+        splitted_list = list(smiles)
+        tokenized_smiles = re.sub(r"\s+(?=[a-z])", "", " ".join(map(str, splitted_list)))
+        decoded = helper.tokenize_input(tokenized_smiles, inp_lang, inp_max_length)
         result_predited = reloaded_forward(decoded)
         result = helper.detokenize_output(result_predited, targ_lang)
         return result
