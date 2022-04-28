@@ -1,0 +1,6 @@
+CDK_Depict_20.png	CCSC(=C(C)C(=NC1=CC(=NC=C1NC)SC(F)(F)F)C)SC(=N)Br
+CDK_Depict_46_97.png	CCSC(=C(C)C(=NC1=CC(=NC=C1NC)SC(F)(F)F)C)SC(=N)Br
+CDK_Depict_20.png	CCSC(=C(C)C(=NC1=CC(=NC=C1NC)SC(F)(F)F)C)SC(=N)Br
+CDK_Depict_46_97.png	CCSC(=C(C)C(=NC1=CC(=NC=C1NC)SC(F)(F)F)C)SC(=N)Br
+CDK_Depict_20.png	CCSC(=C(C)C(=NC1=CC(=NC=C1NC)SC(F)(F)F)C)SC(=N)Br
+CDK_Depict_46_97.png	CCSC(=C(C)C(=NC1=CC(=NC=C1NC)SC(F)(F)F)C)SC(=N)Br

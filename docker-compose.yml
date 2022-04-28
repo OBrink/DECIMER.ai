@@ -1,0 +1,68 @@
+version: '3.7'
+
+services:
+    app:
+        image: app
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile
+            args:
+                - PHP_VERSION=${PHP_VERSION:-7.4}
+        volumes:
+            - ./:/var/www/app
+            - /var/www/app/vendor
+        extra_hosts:
+            - "internal.host:host-gateway"
+        networks:
+            - app-net
+    nginx:
+        image: nginx:alpine
+        ports:
+            - "${APP_PORT:-8080}:80"
+        volumes:
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:cached
+            - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:cached
+            - ./:/var/www/app:cached
+        restart: on-failure
+        depends_on:
+            - app
+        networks:
+            - app-net
+    supervisor:
+        image: app
+        ports: 
+            - "65432:65432"
+            - "65433:65433"
+            - "65434:65434"
+            - "65435:65435"
+            - "65436:65436"
+            - "65437:65437"
+            - "23456:23456"
+            - "23457:23457"
+            - "23458:23458"
+            - "23459:23459"
+            - "23460:23460"
+            - "23461:23461"
+            - "23462:23462"
+            - "23463:23463"
+            - "23464:23464"
+            - "23465:23465"
+            - "12345:12345"
+            - "12346:12346"
+            - "12347:12347"
+            - "12348:12348"
+            - "12349:12349"
+            - "12350:12350"
+        networks:
+            - app-net
+        volumes:
+            - ./:/var/www/app
+            - /var/www/app/vendor
+        depends_on:
+            - app
+            - nginx
+        command: supervisord
+
+networks:
+    app-net:
+        driver: bridge
