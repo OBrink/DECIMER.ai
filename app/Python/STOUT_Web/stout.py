@@ -35,9 +35,11 @@ reloaded_forward = tf.saved_model.load(os.path.join(base, "models/translator_for
 
 
 def translate_forward(sentence_input: str) -> str:
-    """Takes user input splits them into words and generates tokens.
-    Tokens are then passed to the model and the model predicted tokens are retrieved.
-    The predicted tokens gets detokenized and the final result is returned in a string format.
+    """
+    Takes user input splits them into words and generates tokens.
+    Tokens are then passed to the model and the model predicted tokens are
+    retrieved. The predicted tokens gets detokenized and the final result is
+    returned in a string format.
 
     Args:
         sentence_input (str): user input SMILES in string format.
@@ -47,13 +49,17 @@ def translate_forward(sentence_input: str) -> str:
     """
     if len(sentence_input) == 0:
         return ''
-    sentence_input = Chem.MolToSmiles(Chem.MolFromSmiles(sentence_input),kekuleSmiles=True)
-    splitted_list = list(sentence_input)
-    Tokenized_SMILES = re.sub(r"\s+(?=[a-z])", "", " ".join(map(str, splitted_list)))
-    decoded = helper.tokenize_input(Tokenized_SMILES, inp_lang, inp_max_length)
-    result_predited = reloaded_forward(decoded)
-    result = helper.detokenize_output(result_predited, targ_lang)
-    return result
+    mol = Chem.MolFromSmiles(sentence_input)
+    if mol:
+        sentence_input = Chem.MolToSmiles(mol, kekuleSmiles=True)
+        splitted_list = list(sentence_input)
+        Tokenized_SMILES = re.sub(r"\s+(?=[a-z])", "", " ".join(map(str, splitted_list)))
+        decoded = helper.tokenize_input(Tokenized_SMILES, inp_lang, inp_max_length)
+        result_predited = reloaded_forward(decoded)
+        result = helper.detokenize_output(result_predited, targ_lang)
+        return result
+    else:
+        return "Could not generate IUPAC name from invalid SMILES."
 
 
 # def translate_reverse(sentence_input: str) -> str:
