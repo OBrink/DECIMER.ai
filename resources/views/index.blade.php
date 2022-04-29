@@ -30,7 +30,7 @@
                 </form>
 
                 <!-- Warn Safari users that the app my not work -->
-                <div role="alert" id='alert-if-safari'></div>
+                <div class="col-md-12" role="alert" id='alert-if-safari'></div>
                 <script>
                     var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
                     if (is_safari) {
