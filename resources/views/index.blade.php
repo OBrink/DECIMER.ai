@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('page-content')
-    <section class="max-w-screen-lg mx-auto flex-grow">
+    <section class="max-w-screen-lg container mx-auto flex-grow">
         <div class="pt-8">
             <img src="DECIMER.gif" alt="DECIMER Logo" id="decimer_logo_gif" style="display: none;" />
             <img src="DECIMER.png" alt="DECIMER Logo" id="decimer_logo" style="display: none;" />
