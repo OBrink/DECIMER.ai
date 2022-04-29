@@ -2,7 +2,7 @@
 
 @section('page-content')
     <section class="max-w-screen-lg container mx-auto flex-grow">
-        <div class="max-h-screen pt-8">
+        <div class="pt-8">
             <img src="DECIMER.gif" alt="DECIMER Logo" id="decimer_logo_gif" style="display: none;" />
             <img src="DECIMER.png" alt="DECIMER Logo" id="decimer_logo" style="display: none;" />
             <img src="loading_icon.gif" alt="Loading icon" class="mx-auto" id="loading_icon" style="display: none;" />
