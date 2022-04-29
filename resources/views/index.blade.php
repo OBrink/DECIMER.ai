@@ -3,6 +3,17 @@
 @section('page-content')
     <section class="max-w-screen-lg container mx-auto flex-grow">
         <div class="pt-8">
+            <!-- Warn Safari users that the app might not work -->
+            <div role="alert" id='alert-if-safari'></div>
+            <script>
+                var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                if (is_safari) {
+                    const alert_div = document.getElementById('alert-if-safari')
+                    alert_div.className = 'alert alert-danger'
+                    alert_div.innerHTML = 'Safari is currently not supported! Please use a different browser!'
+                }
+            </script>
+            
             <img src="DECIMER.gif" alt="DECIMER Logo" id="decimer_logo_gif" style="display: none;" />
             <img src="DECIMER.png" alt="DECIMER Logo" id="decimer_logo" style="display: none;" />
             <img src="loading_icon.gif" alt="Loading icon" class="mx-auto" id="loading_icon" style="display: none;" />
@@ -29,16 +40,6 @@
                     </div>
                 </form>
 
-                <!-- Warn Safari users that the app my not work -->
-                <div class="col-md-12" role="alert" id='alert-if-safari'></div>
-                <script>
-                    var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-                    if (is_safari) {
-                        const alert_div = document.getElementById('alert-if-safari')
-                        alert_div.className = 'alert alert-danger'
-                        alert_div.innerHTML = 'Safari is currently not supported! Please use a different browser!'
-                    }
-                </script>
 
                 <script async type="module">
                     $(document).on('change', '.file-input', function() {
