@@ -29,6 +29,17 @@
                     </div>
                 </form>
 
+                <!-- Warn Safari users that the app my not work -->
+                <div role="alert" id='alert-if-safari'></div>
+                <script>
+                    var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                    if (is_safari) {
+                        const alert_div = document.getElementById('alert-if-safari')
+                        alert_div.className = 'alert alert-danger'
+                        alert_div.innerHTML = 'Safari is currently not supported! Please use a different browser!'
+                    }
+                </script>
+
                 <script async type="module">
                     $(document).on('change', '.file-input', function() {
                         document.getElementById("loading_icon").style = "display: centered;";
