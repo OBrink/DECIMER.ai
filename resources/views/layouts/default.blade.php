@@ -118,7 +118,7 @@
 					</div>	
 				</div>
 				<div class="flex justify-center">
-					<a href="{{ url('https://cheminf.uni-jena.de/') }}" target="_blank" class="bg-gray-300 text-black text-center py-2 px-4 rounded hover:bg-blue-100 transition">Learn more</a>
+					<a href="{{ url('https://cheminf.uni-jena.de/research/deep-learning/') }}" target="_blank" class="bg-gray-300 text-black text-center py-2 px-4 rounded hover:bg-blue-100 transition">Learn more</a>
 				</div>
 			</div>
 		</section>
@@ -129,7 +129,7 @@
 			<p>
 				Deep Learning for Chemical Image Recognition (DECIMER) is a step towards automated chemical 
 				image segmentation and recognition. DECIMER is actively developed and maintained by the
-				<a href="{{ url('https://cheminf.uni-jena.de/') }}" target="_blank" class="text-blue-400 hover:text-blue-600 transition">Steinbeck group</a> at the
+				<a href="{{ url('https://cheminf.uni-jena.de/research/deep-learning/') }}" target="_blank" class="text-blue-400 hover:text-blue-600 transition">Steinbeck group</a> at the
 				<a href="{{ url('https://www.uni-jena.de/') }}" target="_blank" class="text-blue-400 hover:text-blue-600 transition">Friedrich Schiller University Jena</a>.
 				You need to have the right granted by the publisher of the uploaded documents and images to use them for data mining.
 				We do not store or use the data for anything other than automated processing and display of results in the web app. 
