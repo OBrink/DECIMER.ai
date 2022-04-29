@@ -90,7 +90,7 @@
             @if (Session::get('smiles_array'))
                 <p style="text-align:center" id="main_loading_text">
                     The chemical structure depictions have been processed.</br>
-                    The results presented below.</br></br></br>
+                    The results are presented below.</br></br></br>
                 </p>
                 <span id="smiles_error_span"></span>
                 <!-- DOWNLOAD BUTTON -->
