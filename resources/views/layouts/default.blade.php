@@ -74,7 +74,7 @@
 		@yield('page-content')
 		<!-- HOW TO USE THE DECIMER WEB APP -->
 		<section class="py-20 text-justify">
-			<div class="max-w-screen-lg mx-auto">
+			<div class="max-w-screen-lg container mx-auto">
 				<h3 class="text-4xl font-bold mb-6"> How to use the DECIMER web app?</h3>
 				<p class="mb-6 ">
 					Just upload a pdf document or one or multiple images that contain chemical structure
@@ -97,7 +97,7 @@
 
 		<!-- CITE US -->
 		<section class="py-20 text-justify">
-			<div class="max-w-screen-lg mx-auto">
+			<div class="max-w-screen-lg container mx-auto">
 				<h3 class="text-4xl font-bold mb-6">Cite us</h3>
 				<h4 class="text-xl mb-3 gray-800">If our toolkit helped your work, please cite our publications.</h4> 
 				<div class="flex flex-wrap -mx-2">
