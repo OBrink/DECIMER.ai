@@ -22,12 +22,6 @@
  <p><span style="color: #ff0000;">Telephone: +49 3641 948181</span><br><br><span style="color: #ff0000;">Email: otto.brinkhaus@uni-jena.de</span></p>
  <p>The controller's data protection officer is:</p>
  <p><span style="color: #ff0000;">Otto Brinkhaus&nbsp;</span></p>
- <p><span style="color: #ff0000;">[The following information must be added if an external data protection officer has
-         been appointed].</span></p>
- <p><span style="color: #ff0000;">Any street 1</span><br><span style="color: #ff0000;">12345 Anytown</span><br><span
-         style="color: #ff0000;">Germany</span></p>
- <p><span style="color: #ff0000;">Telephone: Telephone number</span><br><span style="color: #ff0000;">Fax: Fax
-         number</span><br><span style="color: #ff0000;">Email: datenschutz@mustermail.xy</span></p>
  <h3>II. The rights of users and data subjects</h3>
  <p>With regard to the data processing to be described in more detail below, users and data subjects have the right</p>
  <ul type="disc">
