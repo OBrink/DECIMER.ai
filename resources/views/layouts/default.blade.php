@@ -103,13 +103,13 @@
 						</a>
 					</div>
 					<div>
-						<a href={{ url("https://github.com/Kohulan/DECIMER-Image_Transformer") }} target="_blank">
-							<img src="DECIMER_Transformer_logo.png" alt="DECIMER OCSR Logo"/>
+						<a href={{ url("https://github.com/Kohulan/Smiles-TO-iUpac-Translator") }} target="_blank">
+							<img src="STOUT_logo.png" alt="STOUT Logo"/>
 						</a>
 					</div>
 					<div>
-						<a href={{ url("https://github.com/Kohulan/Smiles-TO-iUpac-Translator") }} target="_blank">
-							<img src="STOUT_logo.png" alt="STOUT Logo"/>
+						<a href={{ url("https://github.com/Kohulan/DECIMER-Image_Transformer") }} target="_blank">
+							<img src="DECIMER_Transformer_logo.png" alt="DECIMER OCSR Logo"/>
 						</a>
 					</div>
 				</div>
