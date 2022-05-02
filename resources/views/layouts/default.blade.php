@@ -95,6 +95,24 @@
 					Additionally, the IUPAC names of the chemical structures can be resolved using STOUT V2.
 
 				</p>
+				<!-- Logos with links -->
+				<div class="grid grid-cols-3 gap-8">
+					<div>
+						<a href={{ url("https://github.com/Kohulan/DECIMER-Image-Segmentation") }} target="_blank">
+							<img src="DECIMER_Segmentation_logo.png" alt="DECIMER Segmentation Logo"/>
+						</a>
+					</div>
+					<div>
+						<a href={{ url("https://github.com/Kohulan/DECIMER-Image_Transformer") }} target="_blank">
+							<img src="DECIMER_Transformer_logo.png" alt="DECIMER OCSR Logo"/>
+						</a>
+					</div>
+					<div>
+						<a href={{ url("https://github.com/Kohulan/Smiles-TO-iUpac-Translator") }} target="_blank">
+							<img src="Stout_logo.png" alt="STOUT Logo"/>
+						</a>
+					</div>
+				</div>
 			</div>
 		</section>
 
