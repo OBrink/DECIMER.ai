@@ -109,7 +109,7 @@
 					</div>
 					<div>
 						<a href={{ url("https://github.com/Kohulan/Smiles-TO-iUpac-Translator") }} target="_blank">
-							<img src="Stout_logo.png" alt="STOUT Logo"/>
+							<img src="STOUT_logo.png" alt="STOUT Logo"/>
 						</a>
 					</div>
 				</div>
