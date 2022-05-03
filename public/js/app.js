@@ -105,6 +105,7 @@ function getKetcher(frame_id)
 			
 			if (ketcher)
 				$('textarea').value = ketcher.getMolfile();
+        return ketcher.getMolfile();
 		}
 
 		var row = 1;
