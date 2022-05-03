@@ -99,9 +99,9 @@ function getKetcher(frame_id)
         return ketcher.getSmiles();
 		}
 
-		function getMolfile()
+		function getMolfile(frame_id)
 		{
-			var ketcher = getKetcher();
+			var ketcher = getKetcher(frame_id);
 			
 			if (ketcher)
 				$('textarea').value = ketcher.getMolfile();
