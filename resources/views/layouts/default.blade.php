@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/tailwind.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-	<script src="/js/app.js?1235"></script>
+	<script src="/js/app.js?1236"></script>
 	<script src="/js/jquery.min.js"></script>
 	<link rel="icon" href=" {{ asset('DECIMER_favicon.png') }}">
 	<title>DECIMER Web Application</title>
@@ -41,10 +41,11 @@
 						<input type="hidden" name="img_paths" value="{{ Session::get('img_paths') }}" />
 						<input type="hidden" name="structure_depiction_img_paths" value="{{ Session::get('structure_depiction_img_paths') }}" />
 						<input type="hidden" name="iupac_array" value="{{ Session::get("iupac_array") }}" />
-						<input type="hidden" id="stout_form_smiles_array" name="smiles_array" value="{{ Session::get('smiles_array') }}" />
+						<input type="hidden" id="smiles_array" name="smiles_array" value="{{ Session::get('smiles_array') }}" />
+						<input type="hidden" id="stout_form_molfile_array" name="mol_file_array" />
 						<?php $num_ketcher_frames = count(json_decode(Session::get('smiles_array')))?>
 						<button class="px-4 text-lg mx-2 text-gray-800 hover:text-blue-900 transition" 
-								onclick="stout_submit('{{ $num_ketcher_frames }}', 'stout_form_smiles_array')">
+								onclick="stout_submit('{{ $num_ketcher_frames }}', 'stout_form_molfile_array')">
 							Generate IUPAC names
 						</button>
 					</form>
@@ -54,10 +55,11 @@
 						<input type="hidden" name="img_paths" value="{{ Session::get('img_paths') }}" />
 						<input type="hidden" name="structure_depiction_img_paths" value="{{ Session::get('structure_depiction_img_paths') }}" />
 						<input type="hidden" name="iupac_array" value="{{ Session::get("iupac_array") }}" />
-						<input type="hidden" id="download_form_smiles_array" name="smiles_array" value="{{ Session::get('smiles_array') }}" />
+						<input type="hidden" id="smiles_array" name="smiles_array" value="{{ Session::get('smiles_array') }}" />
+						<input type="hidden" id="header_download_form_molfile_array" name="mol_file_array" />
 						<?php $num_ketcher_frames = count(json_decode(Session::get('smiles_array')))?>
 						<button class="px-4 text-lg mx-2 text-gray-800 hover:text-blue-900 transition" 
-								onclick="submit_with_updated_smiles('{{ $num_ketcher_frames }}', 'download_form_smiles_array')">
+								onclick="submit_with_updated_molfiles('{{ $num_ketcher_frames }}', 'header_download_form_molfile_array')">
 							Download results   
 						</button>
 					</form>

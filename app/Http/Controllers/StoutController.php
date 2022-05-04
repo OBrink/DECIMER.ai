@@ -12,15 +12,19 @@ class StoutController extends Controller
         return view('index');
     }
 
-    public function remove_artefacts(string $json_smiles_arr){
-        // Get rid of artefacts in SMILES;
-        // eg. "["[C-]#[N+][Si][N+]#[C-] |^3:2|"]" --> "["[C-]#[N+][Si][N+]#[C-]"]"
-        $smiles_array = json_decode($json_smiles_arr);
-        foreach ($smiles_array as $key => $smiles){
-            $smiles_array[$key] = explode(" ", $smiles)[0];
+    public function update_smiles_arr(string $smiles, string $mol_block_array){
+        // Get updated smiles array based on mol block str from Ketcher windows
+        $update_smiles_cmd = 'python3 ../app/Python/get_smiles_from_mol_blocks.py ';
+        $updated_smiles = exec($update_smiles_cmd . $mol_block_array);
+        // Update those smiles that represent a valid molecule
+        $updated_smiles = json_decode($updated_smiles);
+        $smiles = json_decode($smiles);
+        foreach ($updated_smiles as $key => $smi){
+            if ($smi != 'invalid'){
+                $smiles[$key] = $smi;
+            }
         }
-        $json_smiles_arr = json_encode($smiles_array);
-        return $json_smiles_arr;
+        return json_encode($smiles);
     }
 
     public function LogStoutProcesses($num_structures){
@@ -41,16 +45,17 @@ class StoutController extends Controller
         $img_paths = $requestData['img_paths'];
         $structure_depiction_img_paths = $requestData['structure_depiction_img_paths'];
         $smiles_array = $requestData['smiles_array'];
+        $mol_block_array = $requestData['mol_file_array'];
 
-        // Remove artefacts
-        $smiles_array = $this->remove_artefacts($smiles_array);
+        // Get updated smiles array based on mol block str from Ketcher windows
+        $smiles_array = $this->update_smiles_arr($smiles_array, $mol_block_array);
 
         // Avoid timeout
         ini_set('max_execution_time', 300);
 
         // Send request to local STOUT server to get IUPAC names
-        $stout_command = 'python3 ../app/Python/stout_predictor_client.py ';
-        $iupac_array = exec($stout_command . $smiles_array);
+        $stout_cmd = 'python3 ../app/Python/stout_predictor_client.py ';
+        $iupac_array = exec($stout_cmd . $smiles_array);
 
         // Write information about how many structures have been processed
         $this->LogStoutProcesses(count(json_decode($iupac_array)));

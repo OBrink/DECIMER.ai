@@ -22,46 +22,49 @@ function display_or_not(checkbox_id, element_id) {
   }
 }
 
-function stout_submit(num_ketcher_frames, smiles_array_id){
+function stout_submit(num_ketcher_frames, molfile_array_id){
   // Change loading icon visibility and loading text and submit STOUT form
   document.getElementById("loading_icon").style = "display: centered;";
   document.getElementById("header_loading_icon").style = "display: block; visibility: visible;";
   document.getElementById("loading_text").innerHTML = "Generating IUPAC names...";
   document.getElementById("main_loading_text").innerHTML = "Generating IUPAC names.</br>The OCSR results presented below.</br></br></br>"
-  submit_with_updated_smiles(num_ketcher_frames, smiles_array_id)
+  submit_with_updated_molfiles(num_ketcher_frames, molfile_array_id)
 }
 
-function submit_with_updated_smiles(num_ketcher_frames, smiles_array_id) {
+function submit_with_updated_molfiles(num_ketcher_frames, molfile_array_id) {
   /*
-  This function gets the SMILES str from the molecule editor (Ketcher) windows
-  and sets a json-array (str!) with the SMILES as the value of the element with
-  $smiles_array_id
+  This function gets the mol file str from the molecule editor (Ketcher) windows
+  and sets a json-array (str!) with the molfiles as the value of the element with
+  $molfile_array_id
+
+  Previously, we just got the SMILES from the Ketcher windows directly but the
+  stereochemical information appears to get lost somewhere on the way
   ___
   Args:
     num_ketcher_frames: int --> number of ketcher frames
-    smiles_array_id: str --> ID of the array with SMILES to be submitted
+    molfiles_array_id: str --> ID of the array with SMILES to be submitted
   */
   num_ketcher_frames = parseInt(num_ketcher_frames);
   // Grab updated SMILES strings from Ketcher Iframes
-  var updated_smiles = [];
+  var updated_molfiles = [];
   // I seriously do not understand why the ketcher frames have the ids
   // 1,3,5,7,... but they do. No matter what ID I give them.
   for (let id = 1; id < num_ketcher_frames * 2 + 1; id += 2) {
-    var smiles_promise = getSmiles(id);
-    smiles_promise.then(
+    var molfile_promise = getMolfile(id);
+    molfile_promise.then(
       function(value) {
-        updated_smiles.push(value);
-        // Once we're done, add updated SMILES array as input value to form
+        updated_molfiles.push(value);
+        // Once we're done, add updated molfile array as input value to form
         // You may frown and think that the following lines should be
         // placed after the for loop, but for some reason, that does not work
         if (id == (num_ketcher_frames - 1) * 2 + 1 ){
-          document.getElementById(smiles_array_id).value = JSON.stringify(updated_smiles);
+          document.getElementById(molfile_array_id).value = JSON.stringify(updated_molfiles);
         }
       },
       function(error) {
-        updated_smiles.push("Invalid");
+        updated_molfiles.push("Invalid");
         if (id == (num_ketcher_frames - 1) * 2 + 1 ){
-          document.getElementById(smiles_array_id).value = JSON.stringify(updated_smiles);
+          document.getElementById(molfile_array_id).value = JSON.stringify(updated_molfiles);
         }
       }
     )

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DateTime;
-// use App\Models\page;
 
 class FileUploadController extends Controller
 {

@@ -119,11 +119,11 @@
                                     <input type="hidden" name="structure_depiction_img_paths"
                                         value="{{ Session::get('structure_depiction_img_paths') }}" />
                                     <input type="hidden" name="iupac_array" value="{{ Session::get('iupac_array') }}" />
-                                    <input type="hidden" id="download_form_smiles_array" name="smiles_array"
-                                        value="{{ Session::get('smiles_array') }}" />
+                                    <input type="hidden" id="smiles_array" name="smiles_array" value="{{ Session::get('smiles_array') }}" />
+						            <input type="hidden" id="download_form_molfile_array" name="mol_file_array" />
                                     <?php $num_ketcher_frames = count(json_decode(Session::get('smiles_array'))); ?>
                                     <button class="file-input"
-                                        onclick="submit_with_updated_smiles('{{ $num_ketcher_frames }}', 'download_form_smiles_array')">
+                                        onclick="submit_with_updated_molfiles('{{ $num_ketcher_frames }}', 'download_form_molfile_array')">
                                 </div>
                             </div>
                         </div>
