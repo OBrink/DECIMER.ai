@@ -222,14 +222,14 @@
                                         id='{{ $key * 2 + 1 }}' name='{{ $key * 2 + 1 }}'
                                         src="ketcher_standalone/ketcher_index.html" width="100%" height="420px">
                                     </iframe>
+                                @else
+                                    <div class="text-xl mb-3 text-red-800">
+                                        <strong>Warning:</strong> It appears like you uploaded more than 20 chemical
+                                        structure depictions (or we detected more than 20 structures in your uploaded
+                                        document). Only the first 20 structures are processed. Please host your own
+                                        version of this application if you want to process a large amounts of data.
+                                    </div>
                                 @endif
-                            @else
-                                <div class="text-xl mb-3 text-red-800">
-                                    <strong>Warning:</strong> It appears like you uploaded more than 20 chemical
-                                    structure depictions (or we detected more than 20 structures in your uploaded
-                                    document). Only the first 20 structures are processed. Please host your own
-                                    version of this application if you want to process a large amounts of data.
-                                </div>
                             @endif
                         </div>
                     @endforeach
