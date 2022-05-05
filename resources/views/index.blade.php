@@ -195,23 +195,27 @@
                                 class="chemical_structure_img">
                             <!-- Display corresponding SMILES str -->
                             @if (Session::get('smiles_array'))
-                                <strong>Resolved SMILES representation</strong> </br>
-                                <a class="break-words"> {{ $smiles_array[$key] }} </a> </br>
-                                <!-- Problem report form (no redirection)-->
-                                <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
-                                <form id="problem_report_form" target="dummyframe"
-                                    action="{{ route('problem.report.post') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="structure_depiction_img_path"
-                                        value="{{ $struc_img_path }}" />
-                                    <input type="hidden" name="smiles" value="{{ $smiles_array[$key] }}" />
-                                </form>
-                                <!-- Problem report button (no redirection)-->
-                                <a href="" target="_blank" id="problem_report_link"
-                                    class="text-blue-400 hover:text-blue-600 transition absolute bottom-0"
-                                    onclick="handle_problem_report()">
-                                    Report a problem with this result
-                                </a>
+                                @if ($key < 21)
+                                    <strong>Resolved SMILES representation</strong> </br>
+                                    <a class="break-words"> {{ $smiles_array[$key] }} </a> </br>
+                                    <!-- Problem report form (no redirection)-->
+                                    <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+                                    <form id="problem_report_form" target="dummyframe"
+                                        action="{{ route('problem.report.post') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="structure_depiction_img_path"
+                                            value="{{ $struc_img_path }}" />
+                                        <input type="hidden" name="smiles" value="{{ $smiles_array[$key] }}" />
+                                    </form>
+                                    <!-- Problem report button (no redirection)-->
+                                    <a href="" target="_blank" id="problem_report_link"
+                                        class="text-blue-400 hover:text-blue-600 transition absolute bottom-0"
+                                        onclick="handle_problem_report()">
+                                        Report a problem with this result
+                                    </a>
+                                @else
+                                    <strong>The image has not been processed.</strong> </br>
+                                @endif
                             @endif
                         </div>
                         <!-- Present DECIMER OCSR results in Ketcher (if it has already run) -->
