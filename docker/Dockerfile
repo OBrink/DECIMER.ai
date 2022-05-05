@@ -35,14 +35,12 @@ RUN docker-php-ext-install -j$(nproc) \
     bcmath \
     gd
 
-RUN pip3 install epam.indigo
 RUN pip3 install pillow
 RUN pip3 install --upgrade setuptools pip
 RUN pip3 install opencv-python
 RUN pip3 install matplotlib
 RUN pip3 install scikit-image
 RUN pip3 install imantics
-RUN pip3 install IPython
 RUN pip3 install pdf2image
 RUN pip3 install pystow
 RUN pip3 install unicodedata2
