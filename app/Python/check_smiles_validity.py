@@ -19,6 +19,8 @@ def decode_smiles_array(str_smiles_arr: str) -> List[str]:
     str_smiles_arr = str_smiles_arr[1:-1]
     str_smiles_arr = '["' + str_smiles_arr + '"]'
     str_smiles_arr = str_smiles_arr.replace(',', '","')
+    str_smiles_arr = str_smiles_arr.replace("\\\\", "\\")
+    str_smiles_arr = str_smiles_arr.replace("\\/", "/")
     smiles_arr = eval(str_smiles_arr)
     return smiles_arr
 
@@ -31,7 +33,7 @@ def main():
     """
     smiles_arr = decode_smiles_array(sys.argv[1])
     validity_arr = []
-    for smiles in smiles_arr:
+    for smiles in smiles_arr:            
         mol = Chem.MolFromSmiles(smiles)
         if mol:
             validity_arr.append("valid")
