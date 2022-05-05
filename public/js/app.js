@@ -45,7 +45,7 @@ function submit_with_updated_molfiles(num_ketcher_frames, molfile_array_id) {
     molfiles_array_id: str --> ID of the array with SMILES to be submitted
   */
   num_ketcher_frames = parseInt(num_ketcher_frames);
-  // Grab updated SMILES strings from Ketcher Iframes
+  // Grab updated mol file str strings from Ketcher Iframes
   var updated_molfiles = [];
   // I seriously do not understand why the ketcher frames have the ids
   // 1,3,5,7,... but they do. No matter what ID I give them.
