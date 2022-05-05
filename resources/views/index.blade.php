@@ -217,7 +217,7 @@
                         <!-- Present DECIMER OCSR results in Ketcher (if it has already run) -->
                         <div class="col-span-2 border-b">
                             @if ($smiles_array_str = Session::get('smiles_array'))
-                                @if ($key < 21):
+                                @if ($key < 21)
                                     <iframe onload="loadMol('{{ str_replace('\\', '\\\\', $smiles_array[$key]) }}', '{{ $key * 2 + 1 }}')"
                                         id='{{ $key * 2 + 1 }}' name='{{ $key * 2 + 1 }}'
                                         src="ketcher_standalone/ketcher_index.html" width="100%" height="420px">
