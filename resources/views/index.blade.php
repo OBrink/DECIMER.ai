@@ -179,6 +179,10 @@
                 @if ($iupac_array_str = Session::get('iupac_array'))
                     <?php $iupac_array = json_decode($iupac_array_str); ?>
                 @endif
+                @if ($validity_array = Session::get('validity_array'))
+                    <?php $validity_array = json_decode($validity_array); ?>
+                    
+                @endif
 
                 <div class="grid grid-cols-3 gap-4">
                     @foreach ($structure_img_paths_array as $key => $struc_img_path)
@@ -198,6 +202,11 @@
                                 @if ($key < 21)
                                     <strong>Resolved SMILES representation</strong> </br>
                                     <a class="break-words"> {{ $smiles_array[$key] }} </a> </br>
+                                    @if ("$validity_array[$key]" == "invalid")
+                                        <div class="text-red-800">
+                                            <strong>Warning:</strong> Invalid SMILES!
+                                        </div>
+                                    @endif
                                     <!-- Problem report form (no redirection)-->
                                     <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
                                     <form id="problem_report_form" target="dummyframe"

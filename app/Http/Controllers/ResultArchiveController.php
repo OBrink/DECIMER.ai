@@ -63,6 +63,10 @@ class ResultArchiveController extends Controller
         // Get updated smiles array based on mol block str from Ketcher windows
         $stout_controller = new StoutController();
         $smiles_array = $stout_controller->update_smiles_arr($smiles_array, $mol_block_array);
+        
+        // Check validity of generated SMILES
+        $check_validity_command = 'python3 ../app/Python/check_smiles_validity.py ';
+        $validity_arr = exec($check_validity_command . $smiles_array);
 
         // Generate zip file
         $zip_info = $this->GenerateZipArchive();
@@ -83,6 +87,7 @@ class ResultArchiveController extends Controller
             ->with('img_paths', $img_paths)
             ->with('structure_depiction_img_paths', $structure_depiction_img_paths)
             ->with('smiles_array', $smiles_array)
+            ->with('validity_array', $validity_arr)
             ->with('download_link', asset('storage/media/' . basename($zip_info[1])))
             ->with('iupac_array', $iupac_array);
     }

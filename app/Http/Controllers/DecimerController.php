@@ -48,6 +48,10 @@ class DecimerController extends Controller
         // enable processing more than 20 chemical structure depictions
         $smiles_array = json_encode($smiles_array);
 
+        // Check validity of generated SMILES
+        $check_validity_command = 'python3 ../app/Python/check_smiles_validity.py ';
+        $validity_arr = exec($check_validity_command . $smiles_array);
+
         // Write data about how many structures have been processed
         $now = new DateTime();
         $now = $now->getTimestamp();
@@ -56,6 +60,7 @@ class DecimerController extends Controller
         return back()
             ->with('img_paths', $img_paths)
             ->with('structure_depiction_img_paths', $structure_depiction_img_paths_str)
-            ->with('smiles_array', $smiles_array);
+            ->with('smiles_array', $smiles_array)
+            ->with('validity_array', $validity_arr);
     }
 }
