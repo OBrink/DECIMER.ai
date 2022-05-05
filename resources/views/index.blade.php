@@ -36,7 +36,13 @@
                     if (is_safari) {
                         const alert_div = document.getElementById('alert-if-safari')
                         alert_div.className = 'alert alert-danger'
-                        alert_div.innerHTML = 'Safari is currently not supported! Please use a different browser!'
+                        alert_div.innerHTML = 'We have gotten reports about problems with Safari! Please use a different browser to get the best user experience!'
+                    }
+                    var is_firefox = /^((?!chrome|android).)*firefox/i.test(navigator.userAgent);
+                    if (is_firefox) {
+                        const alert_div = document.getElementById('alert-if-safari')
+                        alert_div.className = 'alert alert-danger'
+                        alert_div.innerHTML = 'We have gotten reports about problems with Firefox! Please use a different browser to get the best user experience!'
                     }
                 </script>
 
