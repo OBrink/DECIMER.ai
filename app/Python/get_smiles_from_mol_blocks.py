@@ -30,9 +30,11 @@ def main():
     """
     mol_block_arr = decode_mol_block_array(sys.argv[1])
     smiles = []
+    
     for mol_block_str in mol_block_arr:
         mol = Chem.MolFromMolBlock(mol_block_str)
-        if mol:
+        # empty mol block str from Ketcher have length of 102
+        if mol and len(mol_block_str) > 102:
             smiles.append(Chem.MolToSmiles(mol, kekuleSmiles=True))
         else:
             smiles.append("invalid")
