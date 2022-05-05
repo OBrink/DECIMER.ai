@@ -197,7 +197,6 @@
                             @if (Session::get('smiles_array'))
                                 <strong>Resolved SMILES representation</strong> </br>
                                 <a class="break-words"> {{ $smiles_array[$key] }} </a> </br>
-
                                 <!-- Problem report form (no redirection)-->
                                 <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
                                 <form id="problem_report_form" target="dummyframe"
@@ -218,10 +217,19 @@
                         <!-- Present DECIMER OCSR results in Ketcher (if it has already run) -->
                         <div class="col-span-2 border-b">
                             @if ($smiles_array_str = Session::get('smiles_array'))
-                                <iframe onload="loadMol('{{ str_replace('\\', '\\\\', $smiles_array[$key]) }}', '{{ $key * 2 + 1 }}')"
-                                    id='{{ $key * 2 + 1 }}' name='{{ $key * 2 + 1 }}'
-                                    src="ketcher_standalone/ketcher_index.html" width="100%" height="420px">
-                                </iframe>
+                                @if ($key < 21):
+                                    <iframe onload="loadMol('{{ str_replace('\\', '\\\\', $smiles_array[$key]) }}', '{{ $key * 2 + 1 }}')"
+                                        id='{{ $key * 2 + 1 }}' name='{{ $key * 2 + 1 }}'
+                                        src="ketcher_standalone/ketcher_index.html" width="100%" height="420px">
+                                    </iframe>
+                                @endif
+                            @else
+                                <div class="text-xl mb-3 text-red-800">
+                                    <strong>Warning:</strong> It appears like you uploaded more than 20 chemical
+                                    structure depictions (or we detected more than 20 structures in your uploaded
+                                    document). Only the first 20 structures are processed. Please host your own
+                                    version of this application if you want to process a large amounts of data.
+                                </div>
                             @endif
                         </div>
                     @endforeach

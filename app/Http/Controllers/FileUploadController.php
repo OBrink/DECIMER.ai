@@ -78,15 +78,7 @@ class FileUploadController extends Controller
             return back()
                 ->with('errors', $errors);
         }
-        
-        // Generate database entry with page image file names
-        //foreach ($img_paths as $img_path) {
-        //    $converted_page = new page;
-        //    $converted_page->page_image_filename = $img_path;
-        //    $converted_page->save();
-        //}
 
-        // 
         return back()
             ->with('success_message', 'The file was loaded succesfully.')
             ->with('file_name', $file_name)
