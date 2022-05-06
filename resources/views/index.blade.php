@@ -194,20 +194,26 @@
                     @foreach ($structure_img_paths_array as $key => $struc_img_path)
                         <!-- Present IUPAC name -->
                         <div class="col-span-3">
-                            @if (Session::get('iupac_array'))
-                                <strong>IUPAC name</strong> </br>
-                                <a class="break-words"> {{ $iupac_array[$key] }} </a></br>
+                            @if ($key < 21)
+                                @if (Session::get('smiles_array'))
+                                        <strong>Resolved SMILES representation</strong> </br>
+                                        <a class="break-words"> {{ $smiles_array[$key] }} </a> </br>
+                                @endif
+                                <!-- Present IUPAC name -->
+                                @if (Session::get('iupac_array'))
+                                    <strong>IUPAC name</strong> </br>
+                                    <a class="break-words"> {{ $iupac_array[$key] }} </a></br>
+                                @endif
                             @endif
                         </div>
                         <div class="frame border-b">
                             <!-- Display uploaded or segmented chemical structure depiction -->
                             <img src="{{ URL::asset($struc_img_path) }}" alt="extracted structure depiction"
                                 class="chemical_structure_img">
-                            <!-- Display corresponding SMILES str -->
+                            <!-- Display SMILES str here if it is shorter than 60 chars-->
                             @if (Session::get('smiles_array'))
                                 @if ($key < 21)
-                                    <strong>Resolved SMILES representation</strong> </br>
-                                    <a class="break-words"> {{ $smiles_array[$key] }} </a> </br>
+                                    <!-- Invalid SMILES warning -->
                                     @if ("$validity_array[$key]" == "invalid")
                                         <div class="text-red-800">
                                             <strong>Warning:</strong> Invalid SMILES!
