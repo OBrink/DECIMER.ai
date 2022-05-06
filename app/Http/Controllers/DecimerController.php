@@ -52,6 +52,10 @@ class DecimerController extends Controller
         $check_validity_command = 'python3 ../app/Python/check_smiles_validity.py ';
         $validity_arr = exec($check_validity_command . $smiles_array);
 
+        // Get list of InchiKeys
+        $get_inchikey_command = 'python3 ../app/Python/get_inchikey_list_from_smiles.py ';
+        $inchikey_arr = exec($get_inchikey_command . $smiles_array);
+
         // Write data about how many structures have been processed
         $now = new DateTime();
         $now = $now->getTimestamp();
@@ -61,6 +65,7 @@ class DecimerController extends Controller
             ->with('img_paths', $img_paths)
             ->with('structure_depiction_img_paths', $structure_depiction_img_paths_str)
             ->with('smiles_array', $smiles_array)
-            ->with('validity_array', $validity_arr);
+            ->with('validity_array', $validity_arr)
+            ->with('inchikey_array', $inchikey_arr);
     }
 }

@@ -28,15 +28,14 @@ def decode_smiles_array(str_smiles_arr: str) -> List[str]:
 def main():
     """
     This script takes a stringified array with SMILES str from sys.argv and
-    prints a stringified list of strings ("valid" or "invalid") that indicate
-    whether or not the given SMILES represent valid molecules
+    prints a stringified list of InChIKeys (for Pubchem queries)
     """
     smiles_arr = decode_smiles_array(sys.argv[1])
     validity_arr = []
-    for smiles in smiles_arr:            
+    for smiles in smiles_arr:
         mol = Chem.MolFromSmiles(smiles)
         if mol:
-            validity_arr.append("valid")
+            validity_arr.append(Chem.MolToInchiKey(mol))
         else:
             validity_arr.append("invalid")
     print(json.dumps(validity_arr))

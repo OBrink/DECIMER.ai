@@ -187,17 +187,26 @@
                 @endif
                 @if ($validity_array = Session::get('validity_array'))
                     <?php $validity_array = json_decode($validity_array); ?>
-                    
+                @endif
+                @if ($inchikey_array = Session::get('inchikey_array'))
+                    <?php $inchikey_array = json_decode($inchikey_array); ?>
                 @endif
 
                 <div class="grid grid-cols-3 gap-4">
                     @foreach ($structure_img_paths_array as $key => $struc_img_path)
-                        <div class="col-span-3">
+                        <div class="col-span-3 border-t">
                             @if ($key < 21)
                                 <!-- Present SMILES representation -->
                                 @if (Session::get('smiles_array'))
-                                        <strong>Resolved SMILES representation</strong> </br>
-                                        <a class="break-words"> {{ $smiles_array[$key] }} </a> </br>
+                                    <strong>Resolved SMILES representation</strong></br>
+                                    <a class="break-words"> {{ $smiles_array[$key] }}   -   </a>
+                                    @if ("$validity_array[$key]" == "valid") 
+                                        <a href="https://pubchem.ncbi.nlm.nih.gov/#query={{ $inchikey_array[$key] }}" target="_blank"
+                                            class="text-blue-400 hover:text-blue-600 transition">
+                                            Search for this structure on PubChem
+                                        </a>
+                                    @endif
+                                    </br>
                                 @endif
                                 <!-- Present IUPAC name -->
                                 @if (Session::get('iupac_array'))
@@ -206,7 +215,7 @@
                                 @endif
                             @endif
                         </div>
-                        <div class="frame border-b">
+                        <div class="frame">
                             <!-- Display uploaded or segmented chemical structure depiction -->
                             <img src="{{ URL::asset($struc_img_path) }}" alt="extracted structure depiction"
                                 class="chemical_structure_img">
@@ -239,7 +248,7 @@
                             @endif
                         </div>
                         <!-- Present DECIMER OCSR results in Ketcher (if it has already run) -->
-                        <div class="col-span-2 border-b">
+                        <div class="col-span-2">
                             @if ($smiles_array_str = Session::get('smiles_array'))
                                 @if ($key < 21)
                                     <iframe onload="loadMol('{{ str_replace('\\', '\\\\', $smiles_array[$key]) }}', '{{ $key * 2 + 1 }}')"

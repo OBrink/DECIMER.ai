@@ -54,10 +54,14 @@ class StoutController extends Controller
         $check_validity_command = 'python3 ../app/Python/check_smiles_validity.py ';
         $validity_arr = exec($check_validity_command . $smiles_array);
 
+        // Get list of InchiKeys
+        $get_inchikey_command = 'python3 ../app/Python/get_inchikey_list_from_smiles.py ';
+        $inchikey_arr = exec($get_inchikey_command . $smiles_array);
+
         // Avoid timeout
         ini_set('max_execution_time', 300);
 
-        // Send request to local STOUT server to get IUPAC names
+        // Send request to STOUT socket to get IUPAC names
         $stout_cmd = 'python3 ../app/Python/stout_predictor_client.py ';
         $iupac_array = exec($stout_cmd . $smiles_array);
 
@@ -69,6 +73,7 @@ class StoutController extends Controller
             ->with('structure_depiction_img_paths', $structure_depiction_img_paths)
             ->with('smiles_array', $smiles_array)
             ->with('validity_array', $validity_arr)
-            ->with('iupac_array', $iupac_array);
+            ->with('iupac_array', $iupac_array)
+            ->with('inchikey_array', $inchikey_arr);
     }
 }
