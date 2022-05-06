@@ -114,10 +114,16 @@
 								<span class="font-bold">13</span>, 20 (2021).
 							</a>
 							</br>
-							<a href="{{ url('https://doi.org/10.1186/s13321-021-00496-1') }}" class="text-lg text-black mb-3" target="_blank">
+							<a href="{{ url('https://doi.org/10.1186/s13321-021-00538-8') }}" class="text-lg text-black mb-3" target="_blank">
 								Rajan, K., Zielesny, A., Steinbeck, C.
 								<span class="italic">J Cheminform</span>, 
 								<span class="font-bold">13</span>, 61 (2021).
+							</a>
+							</br>
+							<a href="{{ url('https://doi.org/10.1186/s13321-021-00512-4') }}" class="text-lg text-black mb-3" target="_blank">
+								Rajan, K., Zielesny, A., Steinbeck, C. 
+								<span class="italic">J Cheminform</span>, 
+								<span class="font-bold">13</span>, 34 (2021).
 							</a>
 						</div>
 					</div>	
