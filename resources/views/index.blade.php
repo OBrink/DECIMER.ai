@@ -192,9 +192,9 @@
 
                 <div class="grid grid-cols-3 gap-4">
                     @foreach ($structure_img_paths_array as $key => $struc_img_path)
-                        <!-- Present IUPAC name -->
                         <div class="col-span-3">
                             @if ($key < 21)
+                                <!-- Present SMILES representation -->
                                 @if (Session::get('smiles_array'))
                                         <strong>Resolved SMILES representation</strong> </br>
                                         <a class="break-words"> {{ $smiles_array[$key] }} </a> </br>
@@ -210,7 +210,6 @@
                             <!-- Display uploaded or segmented chemical structure depiction -->
                             <img src="{{ URL::asset($struc_img_path) }}" alt="extracted structure depiction"
                                 class="chemical_structure_img">
-                            <!-- Display SMILES str here if it is shorter than 60 chars-->
                             @if (Session::get('smiles_array'))
                                 @if ($key < 21)
                                     <!-- Invalid SMILES warning -->
