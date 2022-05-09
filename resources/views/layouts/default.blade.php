@@ -113,6 +113,7 @@
 								<span class="italic">J Cheminform</span>, 
 								<span class="font-bold">12</span>, 65 (2020).
 							</a>
+							</br>
 							<a href="{{ url('https://doi.org/10.1186/s13321-021-00496-1') }}" class="text-lg text-black mb-3" target="_blank">
 								Rajan, K., Brinkhaus, H.O., Sorokina, M. et al. 
 								<span class="italic">J Cheminform</span>, 
