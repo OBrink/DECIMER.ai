@@ -108,6 +108,11 @@
 				<div class="flex flex-wrap -mx-2">
 					<div class="w-full sm:w1/2 mb-3 px-2">
 						<div class="p-4 bg-gray-200 h-full">
+							<a href="{{ url('https://doi.org/10.1186/s13321-020-00469-w') }}" class="text-lg text-black mb-3" target="_blank">
+								Rajan, K., Zielesny, A., Steinbeck, C.
+								<span class="italic">J Cheminform</span>, 
+								<span class="font-bold">12</span>, 65 (2020).
+							</a>
 							<a href="{{ url('https://doi.org/10.1186/s13321-021-00496-1') }}" class="text-lg text-black mb-3" target="_blank">
 								Rajan, K., Brinkhaus, H.O., Sorokina, M. et al. 
 								<span class="italic">J Cheminform</span>, 
