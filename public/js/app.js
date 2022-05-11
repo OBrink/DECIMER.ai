@@ -165,7 +165,7 @@ function getKetcher(frame_id)
       }   if (ketcher) {
               ketcher.setMolecule(smiles);
           } else {
-              setTimeout(loadMol, 50);
+              setTimeout(loadMol, 100, smiles, frame_id);
           }
       }
 		
