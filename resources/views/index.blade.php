@@ -251,9 +251,11 @@
                         <div class="col-span-2">
                             @if ($smiles_array_str = Session::get('smiles_array'))
                                 @if ($key < 21)
-                                    <iframe onload="loadMol('{{ str_replace('\\', '\\\\', $smiles_array[$key]) }}', '{{ $key * 2 + 1 }}')"
+                                    <iframe 
                                         id='{{ $key * 2 + 1 }}' name='{{ $key * 2 + 1 }}'
-                                        src="ketcher_standalone/ketcher_index.html" width="100%" height="420px">
+                                        src="ketcher_standalone/ketcher_index.html"
+                                        width="100%" height="420px"
+                                        onload="loadMol('{{ str_replace('\\', '\\\\', $smiles_array[$key]) }}', '{{ $key * 2 + 1 }}')">
                                     </iframe>
                                 @else
                                     <div class="text-xl mb-3 text-red-800">

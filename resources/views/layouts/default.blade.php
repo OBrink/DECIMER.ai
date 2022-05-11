@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/tailwind.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-	<script src="/js/app.js?1236"></script>
+	<script src="/js/app.js?1237"></script>
 	<script src="/js/jquery.min.js"></script>
 	<link rel="icon" href=" {{ asset('DECIMER_favicon.png') }}">
 	<title>DECIMER Web Application</title>

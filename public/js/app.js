@@ -157,11 +157,17 @@ function getKetcher(frame_id)
 			ketcher.addFragment($('textarea').value);
 		}
 		
-		function loadMol (smiles, frame_id)
-		{
-			var ketcher = getKetcher(frame_id);
-			ketcher.setMolecule(smiles);
-		}
+		function loadMol(smiles, frame_id)
+      {   try {
+              var ketcher = getKetcher(frame_id);
+      }   catch (e) {
+              var ketcher = null;
+      }   if (ketcher) {
+              ketcher.setMolecule(smiles);
+          } else {
+              setTimeout(loadMol, 50);
+          }
+      }
 		
 
 
