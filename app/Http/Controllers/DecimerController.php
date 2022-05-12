@@ -59,7 +59,8 @@ class DecimerController extends Controller
         // Write data about how many structures have been processed
         $now = new DateTime();
         $now = $now->getTimestamp();
-        file_put_contents('decimer_ocsr_log.tsv', $now . "\t" . $num_structures . "\n", FILE_APPEND | LOCK_EX);
+        $num_exif_tags = exec('python3 ../app/Python/count_exif_tags.py ' . $structure_depiction_img_paths);
+        file_put_contents('decimer_ocsr_log.tsv', $now . "\t" . $num_structures . "\t" . $num_exif_tags . "\n", FILE_APPEND | LOCK_EX);
         
         return back()
             ->with('img_paths', $img_paths)
