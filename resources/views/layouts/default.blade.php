@@ -108,29 +108,40 @@
 				<div class="flex flex-wrap -mx-2">
 					<div class="w-full sm:w1/2 mb-3 px-2">
 						<div class="p-4 bg-gray-200 h-full">
-							<a href="{{ url('https://doi.org/10.1186/s13321-020-00469-w') }}" class="text-lg text-black mb-3" target="_blank">
-								Rajan, K., Zielesny, A., Steinbeck, C.
-								<span class="italic">J Cheminform</span>, 
-								<span class="font-bold">12</span>, 65 (2020).
-							</a>
-							</br>
-							<a href="{{ url('https://doi.org/10.1186/s13321-021-00496-1') }}" class="text-lg text-black mb-3" target="_blank">
-								Rajan, K., Brinkhaus, H.O., Sorokina, M. et al. 
-								<span class="italic">J Cheminform</span>, 
-								<span class="font-bold">13</span>, 20 (2021).
-							</a>
-							</br>
-							<a href="{{ url('https://doi.org/10.1186/s13321-021-00538-8') }}" class="text-lg text-black mb-3" target="_blank">
-								Rajan, K., Zielesny, A., Steinbeck, C.
-								<span class="italic">J Cheminform</span>, 
-								<span class="font-bold">13</span>, 61 (2021).
-							</a>
-							</br>
-							<a href="{{ url('https://doi.org/10.1186/s13321-021-00512-4') }}" class="text-lg text-black mb-3" target="_blank">
-								Rajan, K., Zielesny, A., Steinbeck, C. 
-								<span class="italic">J Cheminform</span>, 
-								<span class="font-bold">13</span>, 34 (2021).
-							</a>
+							<ul class="list-disc">
+								<li>
+									<a href="{{ url('https://doi.org/10.1186/s13321-020-00469-w') }}" class="text-lg text-black mb-3" target="_blank">
+										DECIMER: towards deep learning for chemical image recognition </br> 
+										Rajan, K., Zielesny, A., Steinbeck, C.
+										<span class="italic">J Cheminform</span>, 
+										<span class="font-bold">12</span>, 65 (2020).
+									</a>
+								</li>
+								<li>
+									<a href="{{ url('https://doi.org/10.1186/s13321-021-00496-1') }}" class="text-lg text-black mb-3" target="_blank">
+										DECIMER-Segmentation: Automated extraction of chemical structure depictions from scientific literature  </br>
+										Rajan, K., Brinkhaus, H.O., Sorokina, M. et al. 
+										<span class="italic">J Cheminform</span>, 
+										<span class="font-bold">13</span>, 20 (2021).
+									</a> 
+								</li>
+								<li>
+									<a href="{{ url('https://doi.org/10.1186/s13321-021-00538-8') }}" class="text-lg text-black mb-3" target="_blank">
+										DECIMER 1.0: deep learning for chemical image recognition using transformers </br>
+										Rajan, K., Zielesny, A., Steinbeck, C.
+										<span class="italic">J Cheminform</span>, 
+										<span class="font-bold">13</span>, 61 (2021).
+									</a>
+								</li>
+								<li>
+									<a href="{{ url('https://doi.org/10.1186/s13321-021-00512-4') }}" class="text-lg text-black mb-3" target="_blank">
+									STOUT: SMILES to IUPAC names using neural machine translation </br> 
+									Rajan, K., Zielesny, A., Steinbeck, C. 
+									<span class="italic">J Cheminform</span>, 
+									<span class="font-bold">13</span>, 34 (2021).
+									</a>
+								</li>
+							</ul>
 						</div>
 					</div>	
 				</div>
