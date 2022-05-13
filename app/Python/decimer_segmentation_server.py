@@ -5,13 +5,31 @@ import socket
 import selectors
 import types
 import json
-from multiprocessing import Pool
-base = os.path.split(__file__)[0]
-sys.path.append(os.path.join(base, 'DECIMER_Image_Segmentation/'))
-import Detect_and_save_segmentation
-
+from decimer_segmentation import segment_chemical_structures_from_file
+import cv2
 
 sel = selectors.DefaultSelector()
+
+
+def run_decimer_segmentation(path: str):
+    """
+    This function takes an input path (of an image), runs DECIMER
+    Segmentation, saves the files in storage/app/public/media
+    and returns the file paths that can be sent back to the client.
+
+    Args:
+        input_path (str): path of pdf document
+    """
+    image_name = os.path.split(path)[1]
+    path = os.path.join('./storage/app/public/media/', image_name)
+    segments = segment_chemical_structures_from_file(path)
+    segment_paths = []
+    for segment_index in range(len(segments)):
+        filename = f"{image_name[:-4]}_{segment_index}.png"
+        segment_path = os.path.join('./storage/app/public/media/', filename)
+        cv2.imwrite(segment_path, segments[segment_index])
+        segment_paths.append(os.path.join('../storage/media/', filename))
+    return segment_paths
 
 
 def accept_wrapper(sock):
@@ -20,13 +38,12 @@ def accept_wrapper(sock):
     """
     conn, addr = sock.accept()  # Should be ready to read
     print(f"Accepted connection from {addr}")
-    #conn.setblocking(False)
     data = types.SimpleNamespace(addr=addr, inb=b"", outb=b"")
     events = selectors.EVENT_READ | selectors.EVENT_WRITE
     sel.register(conn, events, data=data)
 
 
-def service_connection(key, mask, model):
+def service_connection(key, mask):
     """
     Handle connection to server, process data using DECIMER
     and send it back to client"""
@@ -45,10 +62,7 @@ def service_connection(key, mask, model):
         if data.outb:
             input_path = data.outb.decode('utf-8')
             # Run DECIMER Segmentation
-            segment_paths = Detect_and_save_segmentation.coordination(
-                input_path,
-                model)
-
+            segment_paths = run_decimer_segmentation(input_path)
             # Send it back
             processed_info = json.dumps(segment_paths).encode('utf-8')
             print(f"Echoing {processed_info} to {data.addr}")
@@ -64,14 +78,11 @@ def run_server(port: int):
     Args:
         port (int)
     """
-    #host = "127.0.0.1"  # The server's hostname or IP address
     host = "0.0.0.0"  # The server's hostname or IP address
-    model = Detect_and_save_segmentation.load_segmentation_model()
     lsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     lsock.bind((host, port))
     lsock.listen()
     print(f"Listening on {(host, port)}")
-    #lsock.setblocking(False)
     sel.register(lsock, selectors.EVENT_READ, data=None)
     while True:
         try:
@@ -80,7 +91,7 @@ def run_server(port: int):
                 if key.data is None:
                     accept_wrapper(key.fileobj)
                 else:
-                    service_connection(key, mask, model)
+                    service_connection(key, mask)
 
         except KeyboardInterrupt:
             print("Caught keyboard interrupt, exiting")

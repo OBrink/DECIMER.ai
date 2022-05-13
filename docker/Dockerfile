@@ -42,6 +42,7 @@ RUN pip3 install matplotlib
 RUN pip3 install scikit-image
 RUN pip3 install imantics
 RUN pip3 install pdf2image
+RUN pip3 install IPython
 RUN pip3 install pystow
 RUN pip3 install unicodedata2
 RUN pip3 install efficientnet
@@ -50,11 +51,13 @@ RUN pip3 install tensorflow==2.7.0
 RUN pip3 install keras==2.3.0
 RUN pip3 install rdkit-pypi
 
+
+
 RUN pecl install apcu-5.1.20 && docker-php-ext-enable apcu
 COPY docker/app/php.ini   $PHP_INI_DIR/conf.d/
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/local/bin --filename=composer
-
+RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image-Segmentation
 WORKDIR /var/www/app
 COPY . /var/www/app
 
