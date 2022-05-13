@@ -28,23 +28,8 @@
                         </div>
                     </div>
                 </form>
-                <!-- Warn Safari users that the app might not work -->
-                </br></br>
-                <div role="alert" id='alert-if-safari'></div>
-                <script>
-                    var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-                    if (is_safari) {
-                        const alert_div = document.getElementById('alert-if-safari')
-                        alert_div.className = 'alert alert-danger'
-                        alert_div.innerHTML = 'We have gotten reports about problems with Safari! Please use a different browser to get the best user experience!'
-                    }
-                    var is_firefox = /^((?!chrome|android).)*firefox/i.test(navigator.userAgent);
-                    if (is_firefox) {
-                        const alert_div = document.getElementById('alert-if-safari')
-                        alert_div.className = 'alert alert-danger'
-                        alert_div.innerHTML = 'We have gotten reports about problems with Firefox! Please use a different browser to get the best user experience!'
-                    }
-                </script>
+                
+
 
                 <script async type="module">
                     $(document).on('change', '.file-input', function() {
@@ -141,6 +126,16 @@
                     </script>
                 @endif
             @endif
+            </br>
+            <div role="alert" id='alert-if-safari'></div>
+            <script>
+                var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                if (is_safari) {
+                    const alert_div = document.getElementById('alert-if-safari')
+                    alert_div.className = 'alert alert-danger'
+                    alert_div.innerHTML = 'We have some problems with Safari! While the app is fully functional, the loading icons do not move while your data is processed. This may appear like the website is frozen. Please use a different browser to get the best user experience!'
+                }
+            </script>
             </br></br></br>
         </div>
 
@@ -280,7 +275,10 @@
                                 value="{{ $structure_depiction_img_paths }}" />
                         </form>
                         <script async type="module">
-                            document.getElementById('OCSR_form').submit();
+                            function send_ocsr_form(){
+                                document.getElementById('OCSR_form').submit();
+                            }
+                            setTimeout(send_ocsr_form, 200);
                         </script>
                     @endif
                 @endif
@@ -292,7 +290,10 @@
                     <input type="hidden" name="img_paths" value="{{ $img_paths }}" />
                 </form>
                 <script async type="module">
-                    document.getElementById('segmentation_form').submit();
+                    function send_segmentation_form(){
+                        document.getElementById('segmentation_form').submit();
+                    }
+                    setTimeout(send_segmentation_form, 200);
                 </script>
             @endif
         @else
