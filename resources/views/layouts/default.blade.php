@@ -172,7 +172,7 @@
 				<a href="{{ url('https://loading.io/icon/') }}" target="_blank" class="text-blue-400 hover:text-blue-600 transition">loading.io</a>.
 				If you run into problems, please file an issue on 
 				<a href="{{ url('https://github.com/OBrink/DECIMER_Web/issues') }}" target="_blank" class="text-blue-400 hover:text-blue-600 transition">Github</a> or 
-				<a href= "mailto:otto.brinkhaus@uni-jena.de" class="text-blue-400 hover:text-blue-600 transition">contact us via email</a>.
+				<a href= "mailto:christoph.steinbeck@uni-jena.de;otto.brinkhaus@uni-jena.de;kohulan.rajan@uni-jena.de" class="text-blue-400 hover:text-blue-600 transition">contact us via email</a>.
 			</p>
 			<!-- Logos with links -->
 			<div class="grid grid-cols-3 gap-8">
