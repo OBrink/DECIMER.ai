@@ -6,10 +6,7 @@ import socket
 import selectors
 import types
 import json
-from multiprocessing import Pool
-
-sys.path.append(os.path.join(os.path.split(__file__)[0], 'STOUT_Web'))
-from stout import translate_forward
+from STOUT import translate_forward
 
 sel = selectors.DefaultSelector()
 
@@ -20,7 +17,6 @@ def accept_wrapper(sock):
     """
     conn, addr = sock.accept()  # Should be ready to read
     print(f"Accepted connection from {addr}")
-    #conn.setblocking(False)
     data = types.SimpleNamespace(addr=addr, inb=b"", outb=b"")
     events = selectors.EVENT_READ | selectors.EVENT_WRITE
     sel.register(conn, events, data=data)

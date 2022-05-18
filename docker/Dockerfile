@@ -22,8 +22,8 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN apt-get update \
-     && apt-get install -y libzip-dev \
-     && docker-php-ext-install zip
+    && apt-get install -y libzip-dev \
+    && docker-php-ext-install zip
 
 RUN docker-php-ext-install -j$(nproc) \
     opcache \
@@ -50,14 +50,15 @@ RUN pip3 install selfies
 RUN pip3 install tensorflow==2.7.0
 RUN pip3 install keras==2.3.0
 RUN pip3 install rdkit-pypi
-
+RUN pip3 install --no-deps decimer-segmentation
+RUN pip3 install --no-deps git+https://github.com/Kohulan/Smiles-TO-iUpac-Translator/
 
 
 RUN pecl install apcu-5.1.20 && docker-php-ext-enable apcu
 COPY docker/app/php.ini   $PHP_INI_DIR/conf.d/
+
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/local/bin --filename=composer
-RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image-Segmentation
 WORKDIR /var/www/app
 COPY . /var/www/app
 
