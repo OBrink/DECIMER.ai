@@ -4,19 +4,17 @@ import os
 import socket
 import selectors
 import types
-sys.path.append(os.path.join(os.path.split(__file__)[0], 'DECIMER_Web_OCSR'))
-from Predictor import *
+from DECIMER import predict_SMILES
 
 sel = selectors.DefaultSelector()
 
 
 def accept_wrapper(sock):
-    """ 
+    """
     Accept connection from client
     """
     conn, addr = sock.accept()  # Should be ready to read
     print(f"Accepted connection from {addr}")
-    #conn.setblocking(False)
     data = types.SimpleNamespace(addr=addr, inb=b"", outb=b"")
     events = selectors.EVENT_READ | selectors.EVENT_WRITE
     sel.register(conn, events, data=data)
@@ -52,7 +50,8 @@ def service_connection(key, mask):
             sock.send(processed_info)  # Should be ready to write
             data.outb = b""
 
-def run_server(port:int):
+
+def run_server(port: int):
     """
     This function starts a DECIMER OCSR socket server
     on 0.0.0.0 with a given port.
@@ -65,7 +64,6 @@ def run_server(port:int):
     lsock.bind((host, port))
     lsock.listen()
     print(f"Listening on {(host, port)}")
-    #lsock.setblocking(False)
     sel.register(lsock, selectors.EVENT_READ, data=None)
     while True:
         try:
@@ -75,12 +73,10 @@ def run_server(port:int):
                     accept_wrapper(key.fileobj)
                 else:
                     service_connection(key, mask)
-                        
         except KeyboardInterrupt:
             print("Caught keyboard interrupt, exiting")
             break
     sel.close()
-
 
 
 def main():
@@ -97,7 +93,7 @@ def main():
     """
     print(f"Setting up DECIMER OCSR Server on port {sys.argv[1]}")
     print(f"Current working directory: {os.getcwd()}")
-    
+
     run_server(int(sys.argv[1]))
 
 

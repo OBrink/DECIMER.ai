@@ -50,9 +50,9 @@ RUN pip3 install selfies
 RUN pip3 install tensorflow==2.7.0
 RUN pip3 install keras==2.3.0
 RUN pip3 install rdkit-pypi
+RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image_Transformer
 RUN pip3 install --no-deps decimer-segmentation
 RUN pip3 install --no-deps git+https://github.com/Kohulan/Smiles-TO-iUpac-Translator/
-
 
 RUN pecl install apcu-5.1.20 && docker-php-ext-enable apcu
 COPY docker/app/php.ini   $PHP_INI_DIR/conf.d/
