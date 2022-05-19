@@ -41,7 +41,7 @@ def main():
     smiles = eval(smiles)
 
     # Create endless iterator of shuffled ports
-    num_ports = 6
+    num_ports = 4
     ports = list(range(12345, 12345 + num_ports))
     random.shuffle(ports)
     ports = cycle(ports)

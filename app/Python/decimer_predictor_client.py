@@ -35,7 +35,7 @@ def main():
     paths = eval(paths)
 
     # Create endless iterator of shuffled ports
-    num_ports = 6
+    num_ports = 5
     ports = list(range(65432, 65432 + num_ports))
     random.shuffle(ports)
     ports = cycle(ports)

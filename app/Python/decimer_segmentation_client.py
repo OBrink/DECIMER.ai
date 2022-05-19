@@ -27,28 +27,29 @@ def send_and_receive(input_path: str, port: int):
         data = s.recv(32768)
     return data.decode('utf-8')
 
+
 def main():
     # Make sure the array with paths can be digested by eval
     paths = sys.argv[1].replace(',', '","').replace(
         '[', '["').replace(']', '"]')
     paths = eval(paths)
-    
+
     # Create endless iterator of shuffled ports
-    num_ports = 10
+    num_ports = 8
     ports = list(range(23456, 23456 + num_ports))
     random.shuffle(ports)
     ports = cycle(ports)
-    
+
     # Wrap up pairs of path and port and send out requests parallely
     starmap_tuples = [(path, next(ports))
                       for path in paths]
     with Pool(len(paths)) as p:
         json_array_path_strings = p.starmap(send_and_receive, starmap_tuples)
-    
+
     # Wrap up received data in a single list of paths
     paths = [eval(path) for path in json_array_path_strings]
     paths = [li for su in paths for li in su]
-    
+
     print(json.dumps(paths))
 
 
