@@ -19,7 +19,10 @@ Deep Learning for Chemical Image Recognition (DECIMER) is a step towards automat
 
 ## Citation
 
-- Rajan, K., Zielesny, A. & Steinbeck, C. DECIMER 1.0: deep learning for chemical image recognition using transformers. J Cheminform 13, 61 (2021). https://doi.org/10.1186/s13321-021-00538-8
+- DECIMER: towards deep learning for chemical image recognition: Rajan, K., Zielesny, A., Steinbeck, C. J Cheminform, 12, 65 (2020).
+- DECIMER-Segmentation: Automated extraction of chemical structure depictions from scientific literature: Rajan, K., Brinkhaus, H.O., Sorokina, M. et al. J Cheminform, 13, 20 (2021).
+- DECIMER 1.0: deep learning for chemical image recognition using transformers: Rajan, K., Zielesny, A., Steinbeck, C. J Cheminform, 13, 61 (2021).
+- STOUT: SMILES to IUPAC names using neural machine translation: Rajan, K., Zielesny, A., Steinbeck, C. J Cheminform, 13, 34 (2021).
 
 
 ## Research Group
