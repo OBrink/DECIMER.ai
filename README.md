@@ -12,7 +12,7 @@ This repository contains the code for [DECIMER.AI](https://decimer.ai)
 
 Deep Learning for Chemical Image Recognition (DECIMER) is a step towards automated chemical image segmentation and recognition. DECIMER is actively developed and maintained by the [Steinbeck group](https://cheminf.uni-jena.de/) at the [Friedrich Schiller University Jena](https://www.uni-jena.de/).
 
-# To run decimer.ai locally
+# To run DECIMER.AI locally
 ```shell
 git clone https://github.com/OBrink/DECIMER_Web.git
 sudo chmod -R 777 DECIMER_Web
