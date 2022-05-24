@@ -13,10 +13,20 @@ This repository contains the code for [DECIMER.AI](https://decimer.ai)
 Deep Learning for Chemical Image Recognition (DECIMER) is a step towards automated chemical image segmentation and recognition. DECIMER is actively developed and maintained by the [Steinbeck group](https://cheminf.uni-jena.de/) at the [Friedrich Schiller University Jena](https://www.uni-jena.de/).
 
 # To run decimer.ai locally
-- clone the repository and set your desired ports in docker compose file and run,
 ```shell
+git clone https://github.com/OBrink/DECIMER_Web.git
+sudo chmod -R 777 DECIMER_Web
+cd DECIMER_Web/
+mv .env.example .env
+sed -i '$ d' routes/web.php
+sudo chmod -R 777 storage/
+sudo chmod -R 777 bootstrap/cache/
 docker-compose up --build -d
 ```
+- Open your chrome browser(DECIMER works better on chrome and chromium based web browsers only) and enter http://localhost:80
+- First run you will be asked to generate an app key for the laravel app
+- Click on "Generate app key"
+- Refresh the webpage. Now you could see decimer.ai running locally on your machine
 
 # DECIMER.AI is powered by
 [<img src="https://decimer.ai/DECIMER_Segmentation_logo.png" alt="drawing" width="250"/>](https://github.com/Kohulan/DECIMER-Image-Segmentation)
