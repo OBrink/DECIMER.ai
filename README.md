@@ -12,7 +12,16 @@ This repository contains the code for [DECIMER.AI](https://decimer.ai)
 
 Deep Learning for Chemical Image Recognition (DECIMER) is a step towards automated chemical image segmentation and recognition. DECIMER is actively developed and maintained by the [Steinbeck group](https://cheminf.uni-jena.de/) at the [Friedrich Schiller University Jena](https://www.uni-jena.de/).
 
+# To run decimer.ai locally
+- clone the repository and set your desired ports in docker compose file and run,
+```shell
+docker-compose up --build -d
+```
 
+# DECIMER.AI is powered by
+[<img src="https://decimer.ai/DECIMER_Segmentation_logo.png" alt="drawing" width="350"/>](https://github.com/Kohulan/DECIMER-Image-Segmentation)
+[<img src="https://decimer.ai/STOUT_logo.png" alt="drawing" width="300"/>](https://github.com/Kohulan/Smiles-TO-iUpac-Translator)
+[<img src="https://decimer.ai/DECIMER_Transformer_logo.png" alt="drawing" width="350"/>](https://github.com/Kohulan/DECIMER-Image_Transformer)
 
 ## License:
 - This project is licensed under the MIT License - see the [LICENSE](https://raw.githubusercontent.com/Kohulan/DECIMER-Image_Transformer/master/LICENSE?token=AHKLIF3EULMCUKCFUHIPBMDARSMDO) file for details
