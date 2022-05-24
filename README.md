@@ -19,9 +19,9 @@ docker-compose up --build -d
 ```
 
 # DECIMER.AI is powered by
-[<img src="https://decimer.ai/DECIMER_Segmentation_logo.png" alt="drawing" width="350"/>](https://github.com/Kohulan/DECIMER-Image-Segmentation)
+[<img src="https://decimer.ai/DECIMER_Segmentation_logo.png" alt="drawing" width="300"/>](https://github.com/Kohulan/DECIMER-Image-Segmentation)
 [<img src="https://decimer.ai/STOUT_logo.png" alt="drawing" width="300"/>](https://github.com/Kohulan/Smiles-TO-iUpac-Translator)
-[<img src="https://decimer.ai/DECIMER_Transformer_logo.png" alt="drawing" width="350"/>](https://github.com/Kohulan/DECIMER-Image_Transformer)
+[<img src="https://decimer.ai/DECIMER_Transformer_logo.png" alt="drawing" width="300"/>](https://github.com/Kohulan/DECIMER-Image_Transformer)
 
 ## License:
 - This project is licensed under the MIT License - see the [LICENSE](https://raw.githubusercontent.com/Kohulan/DECIMER-Image_Transformer/master/LICENSE?token=AHKLIF3EULMCUKCFUHIPBMDARSMDO) file for details
