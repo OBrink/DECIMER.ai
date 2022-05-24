@@ -18,7 +18,7 @@ git clone https://github.com/OBrink/DECIMER_Web.git
 sudo chmod -R 777 DECIMER_Web
 cd DECIMER_Web/
 mv .env.example .env
-sed -i '$ d' routes/web.php
+sed -i '$ d' routes/web.php (Which deletes the last line "URL::forceScheme('https');")
 sudo chmod -R 777 storage/
 sudo chmod -R 777 bootstrap/cache/
 docker-compose up --build -d
