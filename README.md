@@ -29,9 +29,9 @@ docker-compose up --build -d
 - Refresh the webpage. Now you could see decimer.ai running locally on your machine
 
 # DECIMER.AI is powered by
-[<img src="https://decimer.ai/DECIMER_Segmentation_logo.png" alt="drawing" width="250"/>](https://github.com/Kohulan/DECIMER-Image-Segmentation)
-[<img src="https://decimer.ai/STOUT_logo.png" alt="drawing" width="250"/>](https://github.com/Kohulan/Smiles-TO-iUpac-Translator)
-[<img src="https://decimer.ai/DECIMER_Transformer_logo.png" alt="drawing" width="250"/>](https://github.com/Kohulan/DECIMER-Image_Transformer)
+[<img src="https://raw.githubusercontent.com/OBrink/DECIMER_Web/main/logos/DECIMER_Segmentation_logo.png" alt="drawing" width="250"/>](https://github.com/Kohulan/DECIMER-Image-Segmentation)
+[<img src="https://raw.githubusercontent.com/OBrink/DECIMER_Web/main/logos//STOUT_logo.png" alt="drawing" width="250"/>](https://github.com/Kohulan/Smiles-TO-iUpac-Translator)
+[<img src="https://raw.githubusercontent.com/OBrink/DECIMER_Web/main/logos//DECIMER_Transformer_logo.png" alt="drawing" width="250"/>](https://github.com/Kohulan/DECIMER-Image_Transformer)
 
 ## License:
 - This project is licensed under the MIT License - see the [LICENSE](https://raw.githubusercontent.com/Kohulan/DECIMER-Image_Transformer/master/LICENSE?token=AHKLIF3EULMCUKCFUHIPBMDARSMDO) file for details
