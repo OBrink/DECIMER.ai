@@ -27,6 +27,19 @@ class FileUploadController extends Controller
         }
     }
 
+    public function cleanFilename(string $file_name)
+    {
+        // Remove characters that might cause problems from uploaded file name
+        $forbidden_chars = array("!","#","$","%","&","(",")","*","+",
+                                 ",","-",".","/",":",";","<","=",">",
+                                 "?","@","[","\\","]","^","`","{","|",
+                                 "}","~","\t","\n");
+        foreach ($forbidden_chars as $forbidden_char){
+            $file_name = str_replace($forbidden_char, '_', $file_name);
+        }
+        return $file_name;
+    }
+
     public function fileUploadPost(Request $request)
     {
         $this->oldFileRemoval();
@@ -41,9 +54,9 @@ class FileUploadController extends Controller
 
         $files = $request->file('file');
         foreach ($files as $file) {
-            // Get file names, remove space characters, save files
+            // Get file names, remove forbidden characters, save files
             $file_name = $file->getClientOriginalName();
-            $file_name = str_replace(' ', '_', $file_name);
+            $file_name = $this->cleanFilename($file_name);
             $file_path = $file->storeAs('public/media', $file_name);
             $file_ending = strtolower(substr($file_name, -3));
 
