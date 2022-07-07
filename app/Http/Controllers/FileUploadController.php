@@ -33,7 +33,7 @@ class FileUploadController extends Controller
         $forbidden_chars = array("!","#","$","%","&","(",")","*","+",
                                  ",","-",".","/",":",";","<","=",">",
                                  "?","@","[","\\","]","^","`","{","|",
-                                 "}","~","\t","\n");
+                                 "}","~","\t","\n", " ");
         foreach ($forbidden_chars as $forbidden_char){
             $file_name = str_replace($forbidden_char, '_', $file_name);
         }
