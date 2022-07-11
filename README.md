@@ -7,12 +7,12 @@
 [![GitHub release](https://img.shields.io/github/release/OBrink/DECIMER_Web.svg)](https://GitHub.com/OBrink/DECIMER_Web/releases/)
 
 
-This repository contains the code for [DECIMER.AI](https://decimer.ai)
+This repository contains the code running on [decimer.ai](https://decimer.ai)
 [![GitHub Logo](https://github.com/Kohulan/DECIMER-Image-to-SMILES/raw/master/assets/DECIMER.gif)](https://decimer.ai)
 
 Deep Learning for Chemical Image Recognition (DECIMER) is a step towards automated chemical image segmentation and recognition. DECIMER is actively developed and maintained by the [Steinbeck group](https://cheminf.uni-jena.de/) at the [Friedrich Schiller University Jena](https://www.uni-jena.de/).
 
-# To run DECIMER.AI locally
+## How to run DECIMER Web locally
 ```shell
 git clone https://github.com/OBrink/DECIMER_Web.git
 sudo chmod -R 777 DECIMER_Web
@@ -23,10 +23,16 @@ sudo chmod -R 777 storage/
 sudo chmod -R 777 bootstrap/cache/
 docker-compose up --build -d
 ```
-- Open your chrome browser(DECIMER works better on chrome and chromium based web browsers only) and enter http://localhost:80
-- First run you will be asked to generate an app key for the laravel app
+- Open your browser (DECIMER works best on Chrome and Chromium-based web browsers) and enter http://localhost:80
+- On the first run, you will be asked to generate an app key for the Laravel app
 - Click on "Generate app key"
-- Refresh the webpage. Now you could see decimer.ai running locally on your machine
+- Refresh the webpage. Now, DECIMER_Web is running locally on your machine. Have fun!
+
+### Check out the DECIMER Web wiki!
+- Instructions on how to set up a smaller version of DECIMER Web - Currently, the default version in this repository consumes approximately 20 GB of memory. This can be scaled down drastically (at the cost of parallel processing speed).
+- Instructions on how to remove the limitation to 10 pages and 20 structures in your locally running version of DECIMER Web
+- https://github.com/OBrink/DECIMER_Web/wiki
+
 
 # DECIMER.AI is powered by
 [<img src="https://raw.githubusercontent.com/OBrink/DECIMER_Web/main/logos/DECIMER_Segmentation_logo.png" alt="drawing" width="250"/>](https://github.com/Kohulan/DECIMER-Image-Segmentation)
