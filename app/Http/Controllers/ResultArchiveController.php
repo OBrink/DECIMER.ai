@@ -59,6 +59,7 @@ class ResultArchiveController extends Controller
         $smiles_array = $request_data['smiles_array'];
         $iupac_array = $request_data['iupac_array'];
         $mol_block_array = $request_data['mol_file_array'];
+        $classifier_result_array = $request_data['classifier_result_array'];
 
         // Get updated smiles array based on mol block str from Ketcher windows
         $stout_controller = new StoutController();
@@ -94,6 +95,7 @@ class ResultArchiveController extends Controller
             ->with('validity_array', $validity_arr)
             ->with('download_link', asset('storage/media/' . basename($zip_info[1])))
             ->with('iupac_array', $iupac_array)
-            ->with('inchikey_array', $inchikey_arr);
+            ->with('inchikey_array', $inchikey_arr)
+            ->with('classifier_result_array', $classifier_result_array);
     }
 }

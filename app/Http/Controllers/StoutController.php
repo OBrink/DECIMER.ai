@@ -46,6 +46,7 @@ class StoutController extends Controller
         $structure_depiction_img_paths = $requestData['structure_depiction_img_paths'];
         $smiles_array = $requestData['smiles_array'];
         $mol_block_array = $requestData['mol_file_array'];
+        $classifier_result_array = $requestData['classifier_result_array'];
 
         // Get updated smiles array based on mol block str from Ketcher windows
         $smiles_array = $this->update_smiles_arr($smiles_array, $mol_block_array);
@@ -74,6 +75,7 @@ class StoutController extends Controller
             ->with('smiles_array', $smiles_array)
             ->with('validity_array', $validity_arr)
             ->with('iupac_array', $iupac_array)
-            ->with('inchikey_array', $inchikey_arr);
+            ->with('inchikey_array', $inchikey_arr)
+            ->with('classifier_result_array', $classifier_result_array);;
     }
 }
