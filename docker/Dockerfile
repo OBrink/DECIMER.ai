@@ -53,6 +53,7 @@ RUN pip3 install rdkit-pypi
 RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image_Transformer
 RUN pip3 install --no-deps decimer-segmentation
 RUN pip3 install --no-deps git+https://github.com/Kohulan/Smiles-TO-iUpac-Translator/
+RUN pip3 install --no-deps git+https://github.com/Iagea/DECIMER-Image-Classifier
 
 RUN pecl install apcu-5.1.20 && docker-php-ext-enable apcu
 COPY docker/app/php.ini   $PHP_INI_DIR/conf.d/
