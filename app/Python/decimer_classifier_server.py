@@ -44,7 +44,7 @@ def service_connection(key, mask):
             file_name = os.path.split(path)[1]
             path = os.path.join(file_dir, file_name)
             # Run DECIMER Image Classifier
-            result = decimer_classifier.is_chemical_structure(path)
+            result = decimer_classifier.is_chemical_structure(img_path=path)
             # Send it back
             processed_info = str(result).encode('utf-8')
             print(f"Echoing {processed_info} to {data.addr}")
