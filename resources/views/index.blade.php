@@ -112,6 +112,7 @@
                                     <input type="hidden" name="iupac_array" value="{{ Session::get('iupac_array') }}" />
                                     <input type="hidden" id="smiles_array" name="smiles_array" value="{{ Session::get('smiles_array') }}" />
 						            <input type="hidden" id="download_form_molfile_array" name="mol_file_array" />
+                                    <input type="hidden" id="classifier_result_array" name="classifier_result_array" value="{{ Session::get('classifier_result_array') }}" />
                                     <?php $num_ketcher_frames = count(json_decode(Session::get('smiles_array'))); ?>
                                     <button class="file-input"
                                         onclick="submit_with_updated_molfiles('{{ $num_ketcher_frames }}', 'download_form_molfile_array')">
@@ -186,6 +187,9 @@
                 @if ($inchikey_array = Session::get('inchikey_array'))
                     <?php $inchikey_array = json_decode($inchikey_array); ?>
                 @endif
+                @if ($classifier_result_array = Session::get('classifier_result_array'))
+                    <?php $classifier_result_array = json_decode($classifier_result_array); ?>
+                @endif
 
                 <div class="grid grid-cols-3 gap-4">
                     @foreach ($structure_img_paths_array as $key => $struc_img_path)
@@ -193,6 +197,15 @@
                             @if ($key < 21)
                                 <!-- Present SMILES representation -->
                                 @if (Session::get('smiles_array'))
+                                    @if ("$classifier_result_array[$key]" == "False")
+                                        <div class="text-red-800">
+                                            <strong>Are you sure that this is a chemical structure?</strong></br>
+                                            Our system has come to the conclusion that this
+                                            image might not be a chemical structure depiction. </br>
+                                            It has been processed anyway.
+                                        </div>
+                                    @endif
+
                                     <strong>Resolved SMILES representation</strong></br>
                                     <a class="break-words"> {{ $smiles_array[$key] }}   -   </a>
                                     @if ("$validity_array[$key]" == "valid") 
