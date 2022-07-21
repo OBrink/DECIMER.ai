@@ -96,6 +96,8 @@ class ResultArchiveController extends Controller
             ->with('download_link', asset('storage/media/' . basename($zip_info[1])))
             ->with('iupac_array', $iupac_array)
             ->with('inchikey_array', $inchikey_arr)
-            ->with('classifier_result_array', $classifier_result_array);
+            ->with('classifier_result_array', $classifier_result_array)
+            ->with('has_segmentation_already_run', $request_data['has_segmentation_already_run'])
+            ->with('single_image_upload', $request_data['single_image_upload']);
     }
 }

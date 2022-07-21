@@ -1,6 +1,20 @@
 @extends('layouts.default')
 
 @section('page-content')
+    <!-- Set env variables to make sure DECIMER Segmentation runs on single uploaded image -->
+    @if ($img_paths = Session::get('img_paths'))
+        @if ($structure_depiction_img_paths = Session::get('structure_depiction_img_paths'))
+            <?php $structure_img_paths_array = json_decode($structure_depiction_img_paths); ?>
+            <?php $has_segmentation_already_run = Session::get('has_segmentation_already_run'); ?>
+            <?php $single_image_upload = Session::get('single_image_upload'); ?>
+            @if ($has_segmentation_already_run != 'true')
+                @if (count($structure_img_paths_array) == 1)
+                    <?php $single_image_upload = 'true'; ?>
+                @endif
+            @endif
+        @endif
+    @endif
+
     <section class="max-w-screen-lg container mx-auto flex-grow">
         <div class="pt-8">
             <img src="DECIMER.gif" alt="DECIMER Logo" id="decimer_logo_gif" style="display: none;" />
@@ -28,8 +42,6 @@
                         </div>
                     </div>
                 </form>
-                
-
 
                 <script async type="module">
                     $(document).on('change', '.file-input', function() {
@@ -44,16 +56,29 @@
                     document.getElementById("decimer_logo").style = "display: centered;";
                 </script>
                 @if (!Session::get('smiles_array'))
-                    <script>
-                        document.getElementById("loading_icon").style = "display: centered;";
-                        document.getElementById("header_loading_icon").style = "display: block; visibility: visible;";
-                        document.getElementById("loading_text").innerHTML = "Interpreting structure images..."
-                    </script>
-                    <p style="text-align:center">
-                        The uploaded images are presented below.</br>
-                        The DECIMER OCSR engine is running.</br>
-                        This may take a few minutes.
-                    </p>
+                    @if ($single_image_upload != 'true')
+                        <script>
+                            document.getElementById("loading_icon").style = "display: centered;";
+                            document.getElementById("header_loading_icon").style = "display: block; visibility: visible;";
+                            document.getElementById("loading_text").innerHTML = "Interpreting structure images..."
+                        </script>
+                        <p style="text-align:center">
+                            The uploaded images are presented below.</br>
+                            The DECIMER OCSR engine is running.</br>
+                            This may take a few minutes.
+                        </p>
+                    @else
+                        <script>
+                            document.getElementById("loading_icon").style = "display: centered;";
+                            document.getElementById("header_loading_icon").style = "display: block; visibility: visible;";
+                            document.getElementById("loading_text").innerHTML = "Searching for chemical structures"
+                        </script>
+                        <p style="text-align:center">
+                            The image has been uploaded. </br>
+                            Detecting chemical structures.</br>
+                            This may a moment.
+                        </p>
+                    @endif
                 @endif
             @else
                 <script>
@@ -71,10 +96,24 @@
                         This may take a few minutes.
                     </p>
                 @elseif (!Session::get('smiles_array'))
+                    
                     @if (Session::get('structure_depiction_img_paths') == '[]')
-                        <p style="text-align:center">
-                            No structures were detected in the uploaded document.
-                        </p>
+                        @if ($single_image_upload != 'true')
+                            <p style="text-align:center">
+                                No structures were detected in the uploaded document.
+                            </p>
+                        @else
+                            <script>
+                                document.getElementById("loading_icon").style = "display: centered;";
+                                document.getElementById("header_loading_icon").style = "display: block; visibility: visible;";
+                                document.getElementById("loading_text").innerHTML = "Interpreting uploaded image..."
+                            </script>
+                            <p style="text-align:center">
+                                The DECIMER OCSR engine is running on the uploaded image.</br>
+                                This may take a moment.
+                            </p>
+                        @endif
+
                     @else
                         <script>
                             document.getElementById("loading_icon").style = "display: centered;";
@@ -110,9 +149,13 @@
                                     <input type="hidden" name="structure_depiction_img_paths"
                                         value="{{ Session::get('structure_depiction_img_paths') }}" />
                                     <input type="hidden" name="iupac_array" value="{{ Session::get('iupac_array') }}" />
-                                    <input type="hidden" id="smiles_array" name="smiles_array" value="{{ Session::get('smiles_array') }}" />
-						            <input type="hidden" id="download_form_molfile_array" name="mol_file_array" />
-                                    <input type="hidden" id="classifier_result_array" name="classifier_result_array" value="{{ Session::get('classifier_result_array') }}" />
+                                    <input type="hidden" id="smiles_array" name="smiles_array"
+                                        value="{{ Session::get('smiles_array') }}" />
+                                    <input type="hidden" id="download_form_molfile_array" name="mol_file_array" />
+                                    <input type="hidden" id="classifier_result_array" name="classifier_result_array" 
+                                        value="{{ Session::get('classifier_result_array') }}" />
+                                    <input type="hidden" id="download_form_has_segmentation_already_run" name="has_segmentation_already_run" />
+                                    <input type="hidden" id=download_form_single_image_upload name="single_image_upload" />
                                     <?php $num_ketcher_frames = count(json_decode(Session::get('smiles_array'))); ?>
                                     <button class="file-input"
                                         onclick="submit_with_updated_molfiles('{{ $num_ketcher_frames }}', 'download_form_molfile_array')">
@@ -134,21 +177,24 @@
                 if (is_safari) {
                     const alert_div = document.getElementById('alert-if-safari')
                     alert_div.className = 'alert alert-danger'
-                    alert_div.innerHTML = 'We have some problems with Safari! While the app is fully functional, the loading icons do not move while your data is processed. This may appear like the website is frozen. Please use a different browser to get the best user experience!'
+                    alert_div.innerHTML =
+                        'We have some problems with Safari! While the app is fully functional, the loading icons do not move while your data is processed. This may appear like the website is frozen. Please use a different browser to get the best user experience!'
                 }
             </script>
             </br></br></br>
         </div>
 
-        
+        <?php $single_image_upload = Session::get('single_image_upload'); ?>
         <!-- If a file was loaded, display page images -->
         @if ($img_paths = Session::get('img_paths'))
             @if ($img_paths != '[]')
-                <div class="text-xl mb-3 gray-800">
-                    Display uploaded document
-                    <input type="checkbox" id="page_image_checkbox"
-                        onclick="display_or_not('page_image_checkbox', 'page_images')">
-                </div>
+                @if ($img_paths != $structure_depiction_img_paths)
+                    <div class="text-xl mb-3 gray-800">
+                        Display uploaded document
+                        <input type="checkbox" id="page_image_checkbox"
+                            onclick="display_or_not('page_image_checkbox', 'page_images')">
+                    </div>
+                @endif
                 <?php $img_paths_array = json_decode($img_paths); ?>
                 @if (count($img_paths_array) == 10)
                     <div class="text-xl mb-3 text-red-800">
@@ -159,7 +205,7 @@
                 @endif
                 <div id="page_images" class="flex overflow-auto max-h-screen" style="display:none">
                     @foreach ($img_paths_array as $img_path)
-                        <img src="{{ asset('storage/' . $img_path) }}" alt="page image" class="w-7/12">
+                        <img src="{{ asset('storage/media/' . basename($img_path)) }}" alt="page image" class="w-7/12">
                     @endforeach
                 </div>
             @endif
@@ -167,6 +213,17 @@
             <!-- Handle data about uploaded/segmented structures and their SMILES/IUPAC representations -->
             @if ($structure_depiction_img_paths = Session::get('structure_depiction_img_paths'))
                 <?php $structure_img_paths_array = json_decode($structure_depiction_img_paths); ?>
+                <?php $has_segmentation_already_run = Session::get('has_segmentation_already_run'); ?>
+                <?php $single_image_upload = Session::get('single_image_upload'); ?>
+                @if ($has_segmentation_already_run != 'true')
+                    @if (count($structure_img_paths_array) == 1)
+                        <?php $img_paths = $structure_depiction_img_paths; ?>
+                        <?php $structure_depiction_img_paths = null; ?>
+                        <?php $single_image_upload = 'true'; ?>
+                    @endif
+                @endif
+            
+
                 @if (count($structure_img_paths_array) > 20)
                     <div class="text-xl mb-3 text-red-800">
                         <strong>Warning:</strong> It appears like you uploaded more than 20 chemical
@@ -197,7 +254,7 @@
                             @if ($key < 21)
                                 <!-- Present SMILES representation -->
                                 @if (Session::get('smiles_array'))
-                                    @if ("$classifier_result_array[$key]" == "False")
+                                    @if ("$classifier_result_array[$key]" == 'False')
                                         <div class="text-red-800">
                                             <strong>Are you sure that this is a chemical structure?</strong></br>
                                             Our system has come to the conclusion that this
@@ -207,10 +264,10 @@
                                     @endif
 
                                     <strong>Resolved SMILES representation</strong></br>
-                                    <a class="break-words"> {{ $smiles_array[$key] }}   -   </a>
-                                    @if ("$validity_array[$key]" == "valid") 
-                                        <a href="https://pubchem.ncbi.nlm.nih.gov/#query={{ $inchikey_array[$key] }}" target="_blank"
-                                            class="text-blue-400 hover:text-blue-600 transition">
+                                    <a class="break-words"> {{ $smiles_array[$key] }} - </a>
+                                    @if ("$validity_array[$key]" == 'valid')
+                                        <a href="https://pubchem.ncbi.nlm.nih.gov/#query={{ $inchikey_array[$key] }}"
+                                            target="_blank" class="text-blue-400 hover:text-blue-600 transition">
                                             Search for this structure on PubChem
                                         </a>
                                     @endif
@@ -230,7 +287,7 @@
                             @if (Session::get('smiles_array'))
                                 @if ($key < 21)
                                     <!-- Invalid SMILES warning -->
-                                    @if ("$validity_array[$key]" == "invalid")
+                                    @if ("$validity_array[$key]" == 'invalid')
                                         <div class="text-red-800">
                                             <strong>Warning:</strong> Invalid SMILES!
                                         </div>
@@ -259,10 +316,8 @@
                         <div class="col-span-2">
                             @if ($smiles_array_str = Session::get('smiles_array'))
                                 @if ($key < 21)
-                                    <iframe 
-                                        id='{{ $key * 2 + 1 }}' name='{{ $key * 2 + 1 }}'
-                                        src="ketcher_standalone/ketcher_index.html"
-                                        width="100%" height="420px"
+                                    <iframe id='{{ $key * 2 + 1 }}' name='{{ $key * 2 + 1 }}'
+                                        src="ketcher_standalone/ketcher_index.html" width="100%" height="420px"
                                         onload="loadMol('{{ str_replace('\\', '\\\\', $smiles_array[$key]) }}', '{{ $key * 2 + 1 }}')">
                                     </iframe>
                                 @else
@@ -278,32 +333,45 @@
                     @endforeach
                 </div>
 
-                <!-- Execution of DECIMER OCSR when segmented structures are available -->
-                @if (!Session::get('smiles_array'))
-                    @if (Session::get('structure_depiction_img_paths') != '[]')
-                        <form id="OCSR_form" action="{{ route('decimer.ocsr.post') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="img_paths" value="{{ $img_paths }}" />
-                            <input type="hidden" name="structure_depiction_img_paths"
-                                value="{{ $structure_depiction_img_paths }}" />
-                        </form>
-                        <script async type="module">
-                            function send_ocsr_form(){
-                                document.getElementById('OCSR_form').submit();
-                            }
-                            setTimeout(send_ocsr_form, 200);
-                        </script>
+                <!-- For single image upload: If no structure has been segmented, run OCSR on uploaded image -->
+                @if ($single_image_upload == 'true')
+                    @if ($structure_depiction_img_paths == '[]')
+                        <?php $structure_depiction_img_paths = $img_paths; ?>
                     @endif
                 @endif
 
-                <!-- Execution of DECIMER Segmentation when PDF has been loaded -->
-            @else
+                <!-- Execution of DECIMER OCSR when segmented structures are available -->
+                @if (!Session::get('smiles_array'))
+                    @if ($structure_depiction_img_paths != '[]')
+                        @if ($structure_depiction_img_paths)
+                            <form id="OCSR_form" action="{{ route('decimer.ocsr.post') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="img_paths" value="{{ $img_paths }}" />
+                                <input type="hidden" name="structure_depiction_img_paths"
+                                    value="{{ $structure_depiction_img_paths }}" />
+                                <input type="hidden" name="has_segmentation_already_run"
+                                    value="{{ $has_segmentation_already_run }}" />
+                                <input type="hidden" name="single_image_upload" value="{{ $single_image_upload }}" />
+                            </form>
+                            <script async type="module">
+                                function send_ocsr_form() {
+                                    document.getElementById('OCSR_form').submit();
+                                }
+                                setTimeout(send_ocsr_form, 200);
+                            </script>
+                        @endif
+                    @endif
+                @endif
+            @endif
+            <!-- Execution of DECIMER Segmentation when PDF or single image has been loaded -->
+            @if (!$structure_depiction_img_paths)
                 <form id="segmentation_form" action="{{ route('decimer.segmentation.post') }}" method="POST">
                     @csrf
                     <input type="hidden" name="img_paths" value="{{ $img_paths }}" />
+                    <input type="hidden" name="single_image_upload" value="{{ $single_image_upload }}" />
                 </form>
                 <script async type="module">
-                    function send_segmentation_form(){
+                    function send_segmentation_form() {
                         document.getElementById('segmentation_form').submit();
                     }
                     setTimeout(send_segmentation_form, 200);
@@ -321,5 +389,13 @@
                 </div>
             @endif
         @endif
+        <script>
+            document.getElementById('stout_form_has_segmentation_already_run').value = "{{ $has_segmentation_already_run ?? null }}"
+            document.getElementById('stout_form_single_image_upload').value = "{{ $single_image_upload ?? null }}"
+            document.getElementById('header_download_form_has_segmentation_already_run').value = "{{ $has_segmentation_already_run ?? null }}"
+            document.getElementById('header_download_form_single_image_upload').value = "{{ $single_image_upload ?? null }}"
+            document.getElementById('download_form_has_segmentation_already_run').value = "{{ $has_segmentation_already_run ?? null }}"
+            document.getElementById('download_form_single_image_upload').value = "{{ $single_image_upload ?? null }}"
+        </script>
     </section>
 @endsection

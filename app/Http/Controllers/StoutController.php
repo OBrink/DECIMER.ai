@@ -76,6 +76,8 @@ class StoutController extends Controller
             ->with('validity_array', $validity_arr)
             ->with('iupac_array', $iupac_array)
             ->with('inchikey_array', $inchikey_arr)
-            ->with('classifier_result_array', $classifier_result_array);;
+            ->with('classifier_result_array', $classifier_result_array)
+            ->with('has_segmentation_already_run', $requestData['has_segmentation_already_run'])
+            ->with('single_image_upload', $requestData['single_image_upload']);
     }
 }

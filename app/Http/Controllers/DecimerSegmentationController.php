@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DateTime;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 
 class DecimerSegmentationController extends Controller
 {
@@ -47,6 +48,8 @@ class DecimerSegmentationController extends Controller
    
         return back()
             ->with('img_paths', json_encode($img_paths))
-            ->with('structure_depiction_img_paths', json_encode($structure_depiction_img_paths));
+            ->with('structure_depiction_img_paths', json_encode($structure_depiction_img_paths))
+            ->with('has_segmentation_already_run', "true")
+            ->with('single_image_upload', $requestData['single_image_upload']);
     }
 }
