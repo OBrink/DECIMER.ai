@@ -96,7 +96,6 @@
                         This may take a few minutes.
                     </p>
                 @elseif (!Session::get('smiles_array'))
-                    
                     @if (Session::get('structure_depiction_img_paths') == '[]')
                         @if ($single_image_upload != 'true')
                             <p style="text-align:center">
@@ -113,7 +112,6 @@
                                 This may take a moment.
                             </p>
                         @endif
-
                     @else
                         <script>
                             document.getElementById("loading_icon").style = "display: centered;";
@@ -152,9 +150,10 @@
                                     <input type="hidden" id="smiles_array" name="smiles_array"
                                         value="{{ Session::get('smiles_array') }}" />
                                     <input type="hidden" id="download_form_molfile_array" name="mol_file_array" />
-                                    <input type="hidden" id="classifier_result_array" name="classifier_result_array" 
+                                    <input type="hidden" id="classifier_result_array" name="classifier_result_array"
                                         value="{{ Session::get('classifier_result_array') }}" />
-                                    <input type="hidden" id="download_form_has_segmentation_already_run" name="has_segmentation_already_run" />
+                                    <input type="hidden" id="download_form_has_segmentation_already_run"
+                                        name="has_segmentation_already_run" />
                                     <input type="hidden" id=download_form_single_image_upload name="single_image_upload" />
                                     <?php $num_ketcher_frames = count(json_decode(Session::get('smiles_array'))); ?>
                                     <button class="file-input"
@@ -222,7 +221,7 @@
                         <?php $single_image_upload = 'true'; ?>
                     @endif
                 @endif
-            
+
 
                 @if (count($structure_img_paths_array) > 20)
                     <div class="text-xl mb-3 text-red-800">
@@ -285,7 +284,7 @@
                             <img src="{{ URL::asset($struc_img_path) }}" alt="extracted structure depiction"
                                 class="chemical_structure_img">
                             @if (Session::get('smiles_array'))
-                                @if ($key < 21)
+                                @if ($key < 20)
                                     <!-- Invalid SMILES warning -->
                                     @if ("$validity_array[$key]" == 'invalid')
                                         <div class="text-red-800">
@@ -315,7 +314,7 @@
                         <!-- Present DECIMER OCSR results in Ketcher (if it has already run) -->
                         <div class="col-span-2">
                             @if ($smiles_array_str = Session::get('smiles_array'))
-                                @if ($key < 21)
+                                @if ($key < 20)
                                     <iframe id='{{ $key * 2 + 1 }}' name='{{ $key * 2 + 1 }}'
                                         src="ketcher_standalone/ketcher_index.html" width="100%" height="420px"
                                         onload="loadMol('{{ str_replace('\\', '\\\\', $smiles_array[$key]) }}', '{{ $key * 2 + 1 }}')">
@@ -390,11 +389,14 @@
             @endif
         @endif
         <script>
-            document.getElementById('stout_form_has_segmentation_already_run').value = "{{ $has_segmentation_already_run ?? null }}"
+            document.getElementById('stout_form_has_segmentation_already_run').value =
+                "{{ $has_segmentation_already_run ?? null }}"
             document.getElementById('stout_form_single_image_upload').value = "{{ $single_image_upload ?? null }}"
-            document.getElementById('header_download_form_has_segmentation_already_run').value = "{{ $has_segmentation_already_run ?? null }}"
+            document.getElementById('header_download_form_has_segmentation_already_run').value =
+                "{{ $has_segmentation_already_run ?? null }}"
             document.getElementById('header_download_form_single_image_upload').value = "{{ $single_image_upload ?? null }}"
-            document.getElementById('download_form_has_segmentation_already_run').value = "{{ $has_segmentation_already_run ?? null }}"
+            document.getElementById('download_form_has_segmentation_already_run').value =
+                "{{ $has_segmentation_already_run ?? null }}"
             document.getElementById('download_form_single_image_upload').value = "{{ $single_image_upload ?? null }}"
         </script>
     </section>
