@@ -251,7 +251,7 @@
                 <div class="grid grid-cols-3 gap-4">
                     @foreach ($structure_img_paths_array as $key => $struc_img_path)
                         <div class="col-span-3 border-t">
-                            @if ($key < 21)
+                            @if ($key < 20)
                                 <!-- Present SMILES representation -->
                                 @if (Session::get('smiles_array'))
                                     @if ("$classifier_result_array[$key]" == 'False')
