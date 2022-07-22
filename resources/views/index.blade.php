@@ -155,7 +155,12 @@
                                     <input type="hidden" id="download_form_has_segmentation_already_run"
                                         name="has_segmentation_already_run" />
                                     <input type="hidden" id=download_form_single_image_upload name="single_image_upload" />
-                                    <?php $num_ketcher_frames = count(json_decode(Session::get('smiles_array'))); ?>
+                                    <?php 
+                                        $num_ketcher_frames = count(json_decode(Session::get('smiles_array')));
+                                        if ($num_ketcher_frames > 20) {
+                                            $num_ketcher_frames = 20;
+                                        }
+                                    ?>
                                     <button class="file-input"
                                         onclick="submit_with_updated_molfiles('{{ $num_ketcher_frames }}', 'download_form_molfile_array')">
                                 </div>

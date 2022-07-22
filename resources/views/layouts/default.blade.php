@@ -46,7 +46,12 @@
 						<input type="hidden" id="classifier_result_array" name="classifier_result_array" value="{{ Session::get('classifier_result_array') }}" />
 						<input type="hidden" id="stout_form_has_segmentation_already_run" name="has_segmentation_already_run" />
                         <input type="hidden" id="stout_form_single_image_upload" name="single_image_upload" />
-						<?php $num_ketcher_frames = count(json_decode(Session::get('smiles_array')))?>
+						<?php 
+							$num_ketcher_frames = count(json_decode(Session::get('smiles_array')));
+							if ($num_ketcher_frames > 20) {
+								$num_ketcher_frames = 20;
+							}
+						?>
 						<button class="px-4 text-lg mx-2 text-gray-800 hover:text-blue-900 transition" 
 								onclick="stout_submit('{{ $num_ketcher_frames }}', 'stout_form_molfile_array')">
 							Generate IUPAC names
@@ -63,7 +68,12 @@
 						<input type="hidden" id="classifier_result_array" name="classifier_result_array" value="{{ Session::get('classifier_result_array') }}" />
 						<input type="hidden" id="header_download_form_has_segmentation_already_run" name="has_segmentation_already_run" />
                         <input type="hidden" id = header_download_form_single_image_upload name="single_image_upload" />
-						<?php $num_ketcher_frames = count(json_decode(Session::get('smiles_array')))?>
+						<?php 
+							$num_ketcher_frames = count(json_decode(Session::get('smiles_array')));
+							if ($num_ketcher_frames > 20) {
+								$num_ketcher_frames = 20;
+							}
+						?>
 						<button class="px-4 text-lg mx-2 text-gray-800 hover:text-blue-900 transition" 
 								onclick="submit_with_updated_molfiles('{{ $num_ketcher_frames }}', 'header_download_form_molfile_array')">
 							Download results 
