@@ -55,8 +55,6 @@ function submit_with_updated_molfiles(num_ketcher_frames, molfile_array_id) {
       function(value) {
         updated_molfiles.push(value);
         // Once we're done, add updated molfile array as input value to form
-        // You may frown and think that the following lines should be
-        // placed after the for loop, but for some reason, that does not work
         if (id == (num_ketcher_frames - 1) * 2 + 1 ){
           document.getElementById(molfile_array_id).value = JSON.stringify(updated_molfiles);
         }

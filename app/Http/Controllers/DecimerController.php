@@ -35,18 +35,6 @@ class DecimerController extends Controller
         // Send request to local DECIMER predictor server
         $decimer_command = 'python3 ../app/Python/decimer_predictor_client.py ';
         $smiles_array = exec($decimer_command . $structure_depiction_img_paths);
-        
-        $smiles_array = json_decode($smiles_array);
-        // If there were more than 20 structures to process: Fill up with empty str
-        if ($num_structures > 20){
-            for ($i = 0; $i < $num_structures - 20; ++$i){
-                array_push($smiles_array, "");
-            }
-            $num_structures = 20;
-        }
-        // Comment out all lines from last comment to this one if you want to
-        // enable processing more than 20 chemical structure depictions
-        $smiles_array = json_encode($smiles_array);
 
         // Check validity of generated SMILES
         $check_validity_command = 'python3 ../app/Python/check_smiles_validity.py ';

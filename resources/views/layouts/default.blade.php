@@ -66,7 +66,7 @@
 						<?php $num_ketcher_frames = count(json_decode(Session::get('smiles_array')))?>
 						<button class="px-4 text-lg mx-2 text-gray-800 hover:text-blue-900 transition" 
 								onclick="submit_with_updated_molfiles('{{ $num_ketcher_frames }}', 'header_download_form_molfile_array')">
-							Download results   
+							Download results 
 						</button>
 					</form>
 				@endif
@@ -201,8 +201,6 @@
 		</div>
 	</footer>
 	
-
 </body>
-
 
 </html>
