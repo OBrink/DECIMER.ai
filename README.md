@@ -5,7 +5,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/OBrink/DECIMER_Web.svg)](https://GitHub.com/OBrink/DECIMER_Web/issues/)
 [![GitHub contributors](https://img.shields.io/github/contributors/OBrink/DECIMER_Web.svg)](https://GitHub.com/OBrink/DECIMER_Web/graphs/contributors/)
 [![GitHub release](https://img.shields.io/github/release/OBrink/DECIMER_Web.svg)](https://GitHub.com/OBrink/DECIMER_Web/releases/)
-
+[![DOI](https://zenodo.org/badge/486488537.svg)](https://zenodo.org/badge/latestdoi/486488537)
 
 This repository contains the code running on [decimer.ai](https://decimer.ai)
 [![GitHub Logo](https://github.com/Kohulan/DECIMER-Image-to-SMILES/raw/master/assets/DECIMER.gif)](https://decimer.ai)
