@@ -1,4 +1,4 @@
-# DECIMER.AI (Deep Learning for Chemical Image Recognition - WebApp)
+# DECIMER Web (Deep Learning for Chemical Image Recognition - WebApp)
 
 [![License](https://img.shields.io/badge/License-MIT%202.0-blue.svg)](https://opensource.org/licenses/MIT)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-blue.svg)](https://GitHub.com/OBrink/DECIMER_Web/graphs/commit-activity)
