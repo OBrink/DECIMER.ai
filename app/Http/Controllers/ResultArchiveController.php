@@ -27,7 +27,7 @@ class ResultArchiveController extends Controller
     }
 
     public function WriteMolFile(string $file_name, string $mol_block){
-        // Write molecule that is given as a smiles str into a mol file
+        // Write molecule that is given as a mol block str into a mol file
         // ($file_name.mol) 
         $structure_im_name = basename($file_name);
         $mol_file_path = '../storage/app/public/media/' . $structure_im_name . '.mol';
@@ -35,6 +35,25 @@ class ResultArchiveController extends Controller
         fwrite($mol_file, $mol_block);
         fclose($mol_file);
         return $mol_file_path;
+    }
+
+    public function WriteSmilesFile(Array $structure_depiction_img_paths, Array $smiles_array){
+        // Takes array with structure depiction image paths and array with smiles
+        // and creates a .txt file that contains the paths and the smiles
+        // format per line: '$image_name\tsmiles\n'
+        // ___
+        // Returns: Path of written .smiles file
+        $datetime = new DateTime();
+        $timestamp = $datetime->getTimestamp();
+        $smiles_file_path = '../storage/app/public/media/' . 'results_' . $timestamp . '.smiles';
+        $smiles_file = fopen($smiles_file_path, "w");
+        foreach($structure_depiction_img_paths as $key=>$img_path){
+            $img_file_name = basename($img_path);
+            $smiles = $smiles_array[$key];
+            fwrite($smiles_file, $img_file_name . "\t" . $smiles . "\n");
+        }
+        fclose($smiles_file);
+        return $smiles_file_path;
     }
 
     public function FillZipFile(
@@ -84,7 +103,10 @@ class ResultArchiveController extends Controller
             $mol_file_path = $this->WriteMolFile($structure_im_name, $mol_block);
             $zip = $this->FillZipFile($zip, $structure_im_name, $mol_file_path);
         }
-        
+        // Generate text file with SMILES and IUPAC and add it to zip file
+        $smiles_file_path = $this->WriteSmilesFile($structure_depiction_img_paths,
+                                                   json_decode($smiles_array));
+        $zip->addFile($smiles_file_path, 'results.smiles.txt');
         // Stringify and return output arrays
         $structure_depiction_img_paths = json_encode($structure_depiction_img_paths);
         return back()
