@@ -50,7 +50,7 @@ class FileUploadController extends Controller
         $processed_images = false;
 
         $structure_depiction_img_paths = array();
-        $valid_file_endings = array('pdf', 'jpg', 'peg', 'png');
+        $valid_file_endings = array('pdf', 'jpg', 'peg', 'png', 'ebp');
 
         $files = $request->file('file');
         foreach ($files as $file) {
