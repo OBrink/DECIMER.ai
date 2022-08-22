@@ -67,11 +67,13 @@ class FileUploadController extends Controller
                 
             } elseif (in_array($file_ending, $valid_file_endings)) {
                 $img_paths = '[]';
+                // Convert RGBA to RGB image
+                exec('python3 ../app/Python/RGBA2RGB.py ' . 'storage/media/' . $file_name);
                 array_push($structure_depiction_img_paths, 'storage/media/' . $file_name);
                 $processed_images = true;
 
             } else {
-                array_push($errors, 'Invalid file! Valid formats: pdf, png, jpg/jpeg');
+                array_push($errors, 'Invalid file! Valid formats: pdf, png, jpg/jpeg, webp');
             }
         };
         // If it's not null, encode structure depiction paths
