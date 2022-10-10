@@ -293,7 +293,7 @@
                                     <!-- Invalid SMILES warning -->
                                     @if ("$validity_array[$key]" == 'invalid')
                                         <div class="text-red-800">
-                                            <strong>Warning:</strong> Invalid SMILES!
+                                            <strong>Warning:</strong> SMILES is invalid or contains R groups and may not be depicted correctly in the editor window!
                                         </div>
                                     @endif
                                     <!-- Problem report form (no redirection)-->
