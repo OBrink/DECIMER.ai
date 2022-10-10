@@ -50,7 +50,7 @@ RUN pip3 install selfies
 RUN pip3 install tensorflow==2.7.0
 RUN pip3 install keras==2.3.0
 RUN pip3 install rdkit-pypi
-RUN pip3 install --no-deps decimer==2.1.1
+RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image_Transformer
 RUN pip3 install --no-deps decimer-segmentation
 RUN pip3 install --no-deps git+https://github.com/Kohulan/Smiles-TO-iUpac-Translator/
 RUN pip3 install --no-deps git+https://github.com/Iagea/DECIMER-Image-Classifier
