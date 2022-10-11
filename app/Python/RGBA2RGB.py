@@ -1,5 +1,4 @@
 import sys
-import os
 from PIL import Image
 
 def main():
@@ -14,6 +13,7 @@ def main():
         new_img = Image.new('RGB', img.size, (255, 255, 255))
         new_img.paste(img, mask=img.split()[3])
         new_img.save(im_path, "PNG")
+
 
 if __name__ == '__main__':
     main()

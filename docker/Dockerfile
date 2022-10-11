@@ -18,6 +18,7 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     libsm6 \
     libxext6 \
     vim \
+    default-jre \
     && apt-get autoremove --purge -y && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -50,6 +51,7 @@ RUN pip3 install selfies
 RUN pip3 install tensorflow==2.7.0
 RUN pip3 install keras==2.3.0
 RUN pip3 install rdkit-pypi
+RUN pip3 install jpype1
 RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image_Transformer
 RUN pip3 install --no-deps decimer-segmentation
 RUN pip3 install --no-deps git+https://github.com/Kohulan/Smiles-TO-iUpac-Translator/

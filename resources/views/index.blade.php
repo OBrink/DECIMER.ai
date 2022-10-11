@@ -268,8 +268,9 @@
                                     @endif
 
                                     <strong>Resolved SMILES representation</strong></br>
-                                    <a class="break-words"> {{ $smiles_array[$key] }} - </a>
-                                    @if ("$validity_array[$key]" == 'valid')
+                                    <a class="break-words"> {{ $smiles_array[$key] }} </a>
+                                    @if ("$validity_array[$key]" != 'invalid')
+                                        <a> - <a>
                                         <a href="https://pubchem.ncbi.nlm.nih.gov/#query={{ $inchikey_array[$key] }}"
                                             target="_blank" class="text-blue-400 hover:text-blue-600 transition">
                                             Search for this structure on PubChem
@@ -322,7 +323,7 @@
                                 @if ($key < 20)
                                     <iframe id='{{ $key * 2 + 1 }}' name='{{ $key * 2 + 1 }}'
                                         src="ketcher_standalone/index.html" width="100%" height="420px"
-                                        onload="loadMol('{{ str_replace('\\', '\\\\', $smiles_array[$key]) }}', '{{ $key * 2 + 1 }}')">
+                                        onload="loadMol('{{ json_encode(str_replace('\\', '\\\\', $validity_array[$key])) }}', '{{ $key * 2 + 1 }}')">
                                     </iframe>
                                 @else
                                     <div class="text-xl mb-3 text-red-800">
