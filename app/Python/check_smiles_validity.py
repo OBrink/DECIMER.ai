@@ -106,22 +106,6 @@ def cdk_IAtomContainer_to_mol_str(i_atom_container) -> str:
     return str(mol_str)
 
 
-def start_jvm():
-    # Start the JVM to access Java classes
-    try:
-        jvmPath = getDefaultJVMPath()
-    except JVMNotFoundException:
-        print(
-            "If you see this message, for some reason JPype",
-            "cannot find jvm.dll.",
-            "This indicates that the environment varibale JAVA_HOME",
-            "is not set properly.",
-        )
-        jvmPath = "Define/path/or/set/JAVA_HOME/variable/properly"
-    if not isJVMStarted():
-        jar_path = os.path.join(__file__, "cdk-2.8.jar")
-        startJVM(jvmPath, "-ea", "-Djava.class.path=" + str(jar_path))
-
 
 def main():
     """
@@ -129,16 +113,15 @@ def main():
     prints a stringified list of strings ("valid" or "invalid") that indicate
     whether or not the given SMILES represent valid molecules
     """
-    # start_jvm()
     smiles_arr = decode_smiles_array(sys.argv[1])
     mol_block_arr = []
     for smiles in smiles_arr:
-        # try:
-        mol_block = smiles_to_mol_str(smiles)
-        mol_block_arr.append(mol_block)
-        # except Exception as e:
-        #    print(e)
-        #    mol_block_arr.append("invalid")
+        try:
+            mol_block = smiles_to_mol_str(smiles)
+            mol_block_arr.append(mol_block)
+        except Exception as e:
+            print(e)
+            mol_block_arr.append("invalid")
     print(json.dumps(mol_block_arr))
 
 
