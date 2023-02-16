@@ -15,7 +15,7 @@ Deep Learning for Chemical Image Recognition (DECIMER) is a step towards automat
 ## How to run DECIMER Web locally
 ```shell
 git clone https://github.com/OBrink/DECIMER_Web.git
-sudo chmod -R 777 DECIMER_Web
+sudo chmod -R 777 DECIMER.ai
 cd DECIMER_Web/
 mv .env.example .env
 sed -i '$ d' routes/web.php (Which deletes the last line "URL::forceScheme('https');")
