@@ -39,7 +39,7 @@ RUN docker-php-ext-install -j$(nproc) \
 RUN pip3 install pillow
 RUN pip3 install --upgrade setuptools pip
 RUN pip3 install opencv-python
-RUN pip3 install matplotlib
+RUN pip3 install matplotlib==3.4.3
 RUN pip3 install scikit-image
 RUN pip3 install imantics
 RUN pip3 install pdf2image
@@ -53,6 +53,8 @@ RUN pip3 install keras==2.3.0
 RUN pip3 install rdkit-pypi
 RUN pip3 install jpype1
 RUN pip3 install pyheif
+RUN pip3 install protobuf==3.19.0
+RUN pip3 install numpy==1.19.5
 RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image_Transformer
 RUN pip3 install --no-deps decimer-segmentation
 RUN pip3 install --no-deps git+https://github.com/Kohulan/Smiles-TO-iUpac-Translator/
