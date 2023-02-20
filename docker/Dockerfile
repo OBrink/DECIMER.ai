@@ -36,23 +36,23 @@ RUN docker-php-ext-install -j$(nproc) \
     bcmath \
     gd
 
-RUN pip3 install pillow
+RUN pip3 install pillow==9.4.0
 RUN pip3 install --upgrade setuptools pip
-RUN pip3 install opencv-python
+RUN pip3 install opencv-python==4.7.0.68
 RUN pip3 install matplotlib==3.4.3
-RUN pip3 install scikit-image
-RUN pip3 install imantics
-RUN pip3 install pdf2image
-RUN pip3 install IPython
-RUN pip3 install pystow
-RUN pip3 install unicodedata2
-RUN pip3 install efficientnet
-RUN pip3 install selfies
+RUN pip3 install scikit-image==0.19.3
+RUN pip3 install imantics==0.1.12
+RUN pip3 install pdf2image==1.16.2
+RUN pip3 install IPython==8.10.0
+RUN pip3 install pystow==0.4.9
+RUN pip3 install unicodedata2==15.0.0
+RUN pip3 install efficientnet==1.1.1
+RUN pip3 install selfies==2.1.0
 RUN pip3 install tensorflow==2.7.0
 RUN pip3 install keras==2.3.0
-RUN pip3 install rdkit-pypi
-RUN pip3 install jpype1
-RUN pip3 install pyheif
+RUN pip3 install rdkit-pypi==2022.09.4
+RUN pip3 install jpype1==1.4.1
+RUN pip3 install pyheif==0.7.1
 RUN pip3 install protobuf==3.19.0
 RUN pip3 install numpy==1.19.5
 RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image_Transformer
