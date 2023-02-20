@@ -31,7 +31,7 @@ class FileUploadController extends Controller
     {
         // Remove characters that might cause problems from uploaded file name
         $forbidden_chars = array("!","#","$","%","&","(",")","*","+",
-                                 ",","-",".","/",":",";","<","=",">",
+                                 ",","-","/",":",";","<","=",">",
                                  "?","@","[","\\","]","^","`","{","|",
                                  "}","~","\t","\n", " ");
         foreach ($forbidden_chars as $forbidden_char){
