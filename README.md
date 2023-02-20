@@ -16,7 +16,7 @@ Deep Learning for Chemical Image Recognition (DECIMER) is a step towards automat
 ```shell
 git clone https://github.com/OBrink/DECIMER_Web.git
 sudo chmod -R 777 DECIMER.ai
-cd DECIMER_Web/
+cd DECIMER.ai/
 mv .env.example .env
 sed -i '$ d' routes/web.php (Which deletes the last line "URL::forceScheme('https');")
 sudo chmod -R 777 storage/
@@ -26,12 +26,12 @@ docker-compose up --build -d
 - Open your browser (DECIMER works best on Chrome and Chromium-based web browsers) and enter http://localhost:80
 - On the first run, you will be asked to generate an app key for the Laravel app
 - Click on "Generate app key"
-- Refresh the webpage. Now, DECIMER_Web is running locally on your machine. Have fun!
+- Refresh the webpage. Now, DECIMER.ai is running locally on your machine. Have fun!
 
-### Check out the DECIMER Web wiki!
-- Instructions on how to set up a smaller version of DECIMER Web - Currently, the default version in this repository consumes approximately 20 GB of memory. This can be scaled down drastically (at the cost of parallel processing speed).
+### Check out the DECIMER.ai wiki!
+- Instructions on how to set up a smaller version of DECIMER.ai - Currently, the default version in this repository consumes approximately 20 GB of memory. This can be scaled down drastically (at the cost of parallel processing speed).
 - Instructions on how to remove the limitation to 10 pages and 20 structures in your locally running version of DECIMER Web
-- https://github.com/OBrink/DECIMER_Web/wiki
+- https://github.com/OBrink/DECIMER.ai/wiki
 
 
 # DECIMER.AI is powered by
