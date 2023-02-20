@@ -9,18 +9,16 @@ use DateTime;
 class ProblemReportController extends Controller
 {
     public function ProblemReport()
-    {
-        return view('index');
-    }
+    {}
 
-    public function copy_file_to_problem_report_storage(string $path, string $id){
+    public function copy_file_to_problem_report_storage(string $path){
         // Takes file path and moves the corresponding file to a separate directory
         // to save it from the temporary file deletion routine
         $media_dir = '../storage/app/public/media/';
         $orig_path = $media_dir . basename($path);
         $problem_report_storage_dir = '../storage/app/public/reported_results/';
         $dest_path = $problem_report_storage_dir . basename($path);
-        copy($orig_path, $dest_path);   
+        copy($orig_path, $dest_path);
     }
 
     public function ProblemReportPost(Request $request)

@@ -299,7 +299,7 @@
                                     @endif
                                     <!-- Problem report form (no redirection)-->
                                     <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
-                                    <form id="problem_report_form" target="dummyframe"
+                                    <form id="problem_report_form_{{ $key }}" target="dummyframe"
                                         action="{{ route('problem.report.post') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="structure_depiction_img_path"
@@ -307,9 +307,9 @@
                                         <input type="hidden" name="smiles" value="{{ $smiles_array[$key] }}" />
                                     </form>
                                     <!-- Problem report button (no redirection)-->
-                                    <a href="" target="_blank" id="problem_report_link"
+                                    <a href="" target="_blank" id="problem_report_link_{{ $key }}"
                                         class="text-blue-400 hover:text-blue-600 transition absolute bottom-0"
-                                        onclick="handle_problem_report()">
+                                        onclick="handle_problem_report({{ $key }})">
                                         Report a problem with this result
                                     </a>
                                 @else

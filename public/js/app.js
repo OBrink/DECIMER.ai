@@ -1,10 +1,10 @@
-function handle_problem_report(){
+function handle_problem_report(id){
   // Delete link and change text
-  $report_link = document.getElementById('problem_report_link');
+  $report_link = document.getElementById('problem_report_link_' + id.toString());
   $report_link.textContent = "Thank you for your report!";
   $report_link.removeAttribute("href");;
   // Submit form
-  $report_form = document.getElementById('problem_report_form');
+  $report_form = document.getElementById('problem_report_form_' + id.toString());
   $report_form.submit();
 }
 
