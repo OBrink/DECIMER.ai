@@ -45,7 +45,7 @@ def main():
     and converts HEIF images to PNG images.
     """
     im_path = sys.argv[1]
-    HEIC2PNG(im_path)
+    HEIF2PNG(im_path)
     RGBA2RGB(im_path)
 
 
