@@ -50,7 +50,7 @@ class FileUploadController extends Controller
         $processed_images = false;
 
         $structure_depiction_img_paths = array();
-        $valid_file_endings = array('pdf', 'jpg', 'peg', 'png', 'ebp');
+        $valid_file_endings = array('pdf', 'jpg', 'peg', 'png', 'ebp', 'eic', 'eif');
 
         $files = $request->file('file');
         foreach ($files as $file) {
@@ -68,12 +68,12 @@ class FileUploadController extends Controller
             } elseif (in_array($file_ending, $valid_file_endings)) {
                 $img_paths = '[]';
                 // Convert RGBA to RGB image
-                exec('python3 ../app/Python/RGBA2RGB.py ' . 'storage/media/' . $file_name);
+                exec('python3 ../app/Python/normalise_img_format.py ' . 'storage/media/' . $file_name);
                 array_push($structure_depiction_img_paths, 'storage/media/' . $file_name);
                 $processed_images = true;
 
             } else {
-                array_push($errors, 'Invalid file! Valid formats: pdf, png, jpg/jpeg, webp');
+                array_push($errors, 'Invalid file! Valid formats: pdf, png, jpg/jpeg, webp, HEIC');
             }
         };
         // If it's not null, encode structure depiction paths
