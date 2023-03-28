@@ -29,7 +29,7 @@
 		_paq.push(['trackPageView']);
 		_paq.push(['enableLinkTracking']);
 		(function() {
-			var u="//matomo.nmrxiv.org/";
+			var u="//matomo.nfdi4chem.de/";
 			_paq.push(['setTrackerUrl', u+'matomo.php']);
 			_paq.push(['setSiteId', '2']);
 			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
