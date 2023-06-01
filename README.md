@@ -42,8 +42,8 @@ docker-compose up --build -d
 ## License:
 - This project is licensed under the MIT License - see the [LICENSE](https://raw.githubusercontent.com/Kohulan/DECIMER-Image_Transformer/master/LICENSE?token=AHKLIF3EULMCUKCFUHIPBMDARSMDO) file for details
 
-## CITE US!
-- Don't forget to cite our work if you use it!
+## Citation
+Please cite work if you use it:
 ```
 Rajan K, Brinkhaus HO, Agea MI, Zielesny A, Steinbeck C (2023) DECIMER.ai - An open platform for automated optical chemical structure identification, segmentation and recognition in scientific publications. 
 ChemRxiv. doi: 10.26434/chemrxiv-2023-xhcx9 This content is a preprint and has not been peer-reviewed.
