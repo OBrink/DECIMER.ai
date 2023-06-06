@@ -52,9 +52,9 @@ RUN pip3 install tensorflow==2.7.0
 RUN pip3 install keras==2.3.0
 RUN pip3 install rdkit-pypi==2022.09.4
 RUN pip3 install jpype1==1.4.1
-RUN pip3 install pyheif==0.7.1
 RUN pip3 install protobuf==3.19.0
 RUN pip3 install numpy==1.19.5
+RUN pip3 install pillow-heif==0.11.1
 RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image_Transformer
 RUN pip3 install --no-deps decimer-segmentation
 RUN pip3 install --no-deps git+https://github.com/Kohulan/Smiles-TO-iUpac-Translator/
