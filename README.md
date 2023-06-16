@@ -14,7 +14,7 @@ Deep Learning for Chemical Image Recognition (DECIMER) is a step towards automat
 
 ## How to run DECIMER Web locally
 ```shell
-git clone https://github.com/OBrink/DECIMER_Web.git
+git clone https://github.com/OBrink/DECIMER.ai.git
 sudo chmod -R 777 DECIMER.ai
 cd DECIMER.ai/
 mv .env.example .env
