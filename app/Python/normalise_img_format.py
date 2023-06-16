@@ -1,7 +1,6 @@
 import sys
-from io import BytesIO
 from PIL import Image
-import pyheif
+from pillow_heif import register_heif_opener
 
 
 def RGBA2RGB(im_path: str) -> None:
@@ -28,14 +27,10 @@ def HEIF2PNG(im_path):
     Args:
         im_path (str): image path
     """
+    register_heif_opener()
     if im_path[-4:].lower() in ["heic", "heif"]:
-        with open(im_path, "rb") as fh:
-            buf = BytesIO(fh.read())
-            im = pyheif.read_heif(buf)
-        # Convert to other file format like jpeg
-        pi = Image.frombytes(
-                mode=im.mode, size=im.size, data=im.data)
-        pi.save(im_path, format="png")
+        im = Image.open(im_path)
+        im.save(im_path, format="png")
 
 
 def main():
