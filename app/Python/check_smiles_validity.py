@@ -39,6 +39,7 @@ def decode_smiles_array(str_smiles_arr: str) -> List[str]:
     str_smiles_arr = str_smiles_arr.replace(',', '","')
     str_smiles_arr = str_smiles_arr.replace("\\\\", "\\")
     str_smiles_arr = str_smiles_arr.replace("\\/", "/")
+    str_smiles_arr = str_smiles_arr.replace("\\N", "\\\\N")
     smiles_arr = eval(str_smiles_arr)
     return smiles_arr
 

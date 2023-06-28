@@ -33,7 +33,8 @@ def send_and_receive(smiles: str, port: int):
 def main():
     # Make sure the array with SMILES str can be digested by eval
     replacement_dict = {' ': '',
-                        ',': '","', }
+                        ',': '","',
+                        "\\N": "\\\\N"}
     smiles = sys.argv[1][1:-1]
     smiles = '["' + smiles + '"]'
     for key in replacement_dict.keys():
