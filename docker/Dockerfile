@@ -53,7 +53,7 @@ RUN pip3 install keras==2.3.0
 RUN pip3 install rdkit-pypi==2022.09.4
 RUN pip3 install jpype1==1.4.1
 RUN pip3 install protobuf==3.19.0
-RUN pip3 install numpy==1.19.5
+RUN pip3 install numpy==1.21.6
 RUN pip3 install pillow-heif==0.11.1
 RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image_Transformer@v2.3.1
 RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image-Segmentation@V1.1.2
