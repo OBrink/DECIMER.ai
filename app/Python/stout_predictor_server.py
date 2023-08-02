@@ -40,8 +40,11 @@ def service_connection(key, mask):
     if mask & selectors.EVENT_WRITE:
         if data.outb:
             smiles = data.outb.decode('utf-8')
-            # Run STOUT V2
-            iupac_name = (translate_forward(smiles))
+            if "*" in smiles:
+                iupac_name = "Unable to generate IUPAC name from Markush structure"
+            else:
+                # Run STOUT V2
+                iupac_name = (translate_forward(smiles))
             # Send it back
             processed_info = json.dumps(iupac_name).encode('utf-8')
             print(f"Echoing {processed_info} to {data.addr}")
