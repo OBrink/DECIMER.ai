@@ -55,10 +55,10 @@ RUN pip3 install jpype1==1.4.1
 RUN pip3 install protobuf==3.19.0
 RUN pip3 install numpy==1.19.5
 RUN pip3 install pillow-heif==0.11.1
-RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image_Transformer
-RUN pip3 install --no-deps decimer-segmentation
-RUN pip3 install --no-deps git+https://github.com/Kohulan/Smiles-TO-iUpac-Translator/
-RUN pip3 install --no-deps git+https://github.com/Iagea/DECIMER-Image-Classifier
+RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image_Transformer@v2.3.1
+RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image-Segmentation@V1.1.2
+RUN pip3 install --no-deps git+https://github.com/Kohulan/Smiles-TO-iUpac-Translator@V2.0.3
+RUN pip3 install --no-deps git+https://github.com/Iagea/DECIMER-Image-Classifier@146b00be2fe6f8fa6670a4255969d4747502b7f2
 
 RUN pecl install apcu-5.1.20 && docker-php-ext-enable apcu
 COPY docker/app/php.ini   $PHP_INI_DIR/conf.d/
