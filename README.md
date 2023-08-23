@@ -27,6 +27,7 @@ docker-compose up --build -d
 - On the first run, you will be asked to generate an app key for the Laravel app
 - Click on "Generate app key"
 - Refresh the webpage. Now, DECIMER.ai is running locally on your machine. Have fun!
+- It may take 5-10 minutes until all models are loaded and the app can be run without errors.
 
 ### Check out the DECIMER.ai wiki!
 - Instructions on how to set up a smaller version of DECIMER.ai - Currently, the default version in this repository consumes approximately 20 GB of memory. This can be scaled down drastically (at the cost of parallel processing speed).
