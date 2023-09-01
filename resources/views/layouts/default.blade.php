@@ -139,6 +139,14 @@
 						<div class="p-4 bg-gray-200 h-full">
 							<ul class="list-disc">
 								<li>
+									<a href="{{ url('https://doi.org/10.1038/s41467-023-40782-0') }}" class="text-lg text-black mb-3" target="_blank">
+										DECIMER.ai: an open platform for automated optical chemical structure identification, segmentation and recognition in scientific publications </br> 
+										Rajan, K., Brinkhaus, H.O., Agea, I.A. Zielesny, A., Steinbeck, C.
+										<span class="italic">Nat Commun</span>, 
+										<span class="font-bold">14</span>, 5045 (2020).
+									</a>
+								</li>
+								<li>
 									<a href="{{ url('https://doi.org/10.1186/s13321-020-00469-w') }}" class="text-lg text-black mb-3" target="_blank">
 										DECIMER: towards deep learning for chemical image recognition </br> 
 										Rajan, K., Zielesny, A., Steinbeck, C.
