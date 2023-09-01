@@ -260,10 +260,10 @@
                                 @if (Session::get('smiles_array'))
                                     @if ("$classifier_result_array[$key]" == 'False')
                                         <div class="text-red-800">
-                                            <strong>Are you sure that this is a chemical structure?</strong></br>
+                                            <strong>We are not sure if this is a chemical structure.</strong></br>
                                             Our system has come to the conclusion that this
                                             image might not be a chemical structure depiction. </br>
-                                            It has been processed anyway.
+                                            A SMILES string has been generated anyway.
                                         </div>
                                     @endif
 
