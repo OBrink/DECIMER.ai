@@ -143,7 +143,7 @@
 										DECIMER.ai: an open platform for automated optical chemical structure identification, segmentation and recognition in scientific publications </br> 
 										Rajan, K., Brinkhaus, H.O., Agea, I.A. Zielesny, A., Steinbeck, C.
 										<span class="italic">Nat Commun</span>, 
-										<span class="font-bold">14</span>, 5045 (2020).
+										<span class="font-bold">14</span>, 5045 (2023).
 									</a>
 								</li>
 								<li>
