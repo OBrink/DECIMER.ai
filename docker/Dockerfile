@@ -55,7 +55,8 @@ RUN pip3 install protobuf==3.19.0
 RUN pip3 install numpy==1.21.6
 RUN pip3 install pillow-heif==0.11.1
 RUN pip3 install scipy==1.9.3
-RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image_Transformer@v2.3.1
+RUN pip3 install tensorflow-addons==0.22.0
+RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image_Transformer@3db69546ed706af2be474e774de888bd3a067c6e
 RUN pip3 install --no-deps git+https://github.com/Kohulan/DECIMER-Image-Segmentation@v1.3.0
 RUN pip3 install --no-deps git+https://github.com/Kohulan/Smiles-TO-iUpac-Translator@V2.0.3
 RUN pip3 install --no-deps git+https://github.com/Iagea/DECIMER-Image-Classifier@146b00be2fe6f8fa6670a4255969d4747502b7f2
